@@ -32,6 +32,9 @@ elseif has('gui_macvim')
 
   " Use option (alt) as meta key.
   set macmeta
+elseif has('gui_running')
+  set guifont=Source\ Code\ Pro\ for\ Powerline\ Medium\ 10
+  set guioptions=egmrt
 endif
 
 if has('macunix') || has('mac')
