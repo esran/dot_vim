@@ -35,7 +35,7 @@ let g:syntastic_html_checkers = ['handlebars']
 " Hat tip http://git.io/SPIBfg
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
-let g:syntastic_full_redraws = 1
+" let g:syntastic_full_redraws = 1
 
 " ---------------
 " NERDTree
@@ -104,10 +104,13 @@ let g:ctrlp_map = ''
 " Ensure max height isn't too large. (for performance)
 let g:ctrlp_max_height = 10
 let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+let g:ctrlp_max_files = 0
 " Fix fix new windows opening in split from startify
 let g:ctrlp_reuse_window = 'startify'
 let g:ctrlp_mruf_max = 350
 let g:ctrlp_mruf_default_order = 0
+" Find dotfiles by default
+let g:ctrlp_show_hidden = 1
 
 " Leader Commands
 nnoremap <leader>t :CtrlPRoot<CR>
@@ -219,6 +222,7 @@ let g:mta_filetypes = {
     \ 'xml' : 1,
     \ 'handlebars' : 1,
     \ 'eruby' : 1,
+    \ 'sgml' : 1
     \}
 
 " ---------------
@@ -231,6 +235,11 @@ let g:ycm_filetype_specific_completion_to_disable = {
     \ 'ruby' : 1,
     \ 'javascript' : 1,
     \}
+" Don't want preview window
+let g:ycm_add_preview_to_completeopt = 0
+" Disable the diagnostics as it currently
+" clobbers signify markers :(
+let g:ycm_show_diagnostics_ui = 0
 
 " ---------------
 " vim-signify
@@ -459,3 +468,18 @@ nmap N <Plug>(anzu-N)
 nmap * <Plug>(anzu-star)
 nmap # <Plug>(anzu-sharp)
 let g:airline#extensions#anzu#enabled = 1
+
+" --------
+" vim-tags
+" --------
+let g:vim_tags_ignore_files = ['.gitignore', '.svnignore', '.cvsignore', 'pool_config.c']
+
+" -------
+" csv.vim
+" -------
+" Highlight the current column in csv files by default
+let g:csv_highlight_column = 'y'
+" Treat .tbl files as csv
+augroup filetypedetect
+	au! BufRead,BufNewFile *.tbl 	setfiletype csv
+augroup END
