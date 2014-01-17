@@ -46,21 +46,21 @@ nnoremap ` '
 " ---------------
 " Window Movement
 " ---------------
-nnoremap <silent> gh :WriteBufferIfNecessary<CR>:wincmd h<CR>
-nnoremap <silent> gj :WriteBufferIfNecessary<CR>:wincmd j<CR>
-nnoremap <silent> gk :WriteBufferIfNecessary<CR>:wincmd k<CR>
-nnoremap <silent> gl :WriteBufferIfNecessary<CR>:wincmd l<CR>
+nnoremap <silent> gh :wincmd h<CR>
+nnoremap <silent> gj :wincmd j<CR>
+nnoremap <silent> gk :wincmd k<CR>
+nnoremap <silent> gl :wincmd l<CR>
 
 "   4 Window Splits
 "
 "   -----------------
 "   g1 | g2 | g3 | g4
 "   -----------------
-nnoremap <silent> g1 :WriteBufferIfNecessary<CR>:wincmd t<CR>
-nnoremap <silent> g2 :WriteBufferIfNecessary<CR>:wincmd t<bar>:wincmd l<CR>
-nnoremap <silent> g3 :WriteBufferIfNecessary<CR>:wincmd t<bar>:wincmd l<bar>
+nnoremap <silent> g1 :wincmd t<CR>
+nnoremap <silent> g2 :wincmd t<bar>:wincmd l<CR>
+nnoremap <silent> g3 :wincmd t<bar>:wincmd l<bar>
       \:wincmd l<CR>
-nnoremap <silent> g4 :WriteBufferIfNecessary<CR>:wincmd b<CR>
+nnoremap <silent> g4 :wincmd b<CR>
 
 " Previous Window
 nnoremap <silent> gp :wincmd p<CR>
@@ -160,5 +160,9 @@ nnoremap Q @@
 nnoremap K k
 vnoremap K k
 
-" Toggle paste mode with F5
-nnoremap <silent> <F5> :set paste!<CR>
+" Toggle paste mode with F6
+nnoremap <silent> <F6> :set paste!<CR>
+
+" Map f5 to change current buffers working directory to
+" match the file being edited
+nnoremap <F5> :lcd %:p:h<CR>:pwd<CR>
