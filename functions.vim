@@ -227,6 +227,16 @@ function! CopyMatches(reg)
 endfunction
 command! -register CopyMatches call CopyMatches(<q-reg>)
 
+function! YankLineWithoutNewline()
+  let l = line(".")
+  let c = col(".")
+  normal ^y$
+  " Clean up: restore previous search history, and cursor position
+  call cursor(l, c)
+endfunction
+
+nnoremap <silent>yl :call YankLineWithoutNewline()<CR>
+
 " Move windows between tabs
 function MoveToPrevTab()
   "there is only one window
