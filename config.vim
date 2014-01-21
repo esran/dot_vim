@@ -43,20 +43,12 @@ if exists('+colorcolumn')
 	set colorcolumn=132 " Color the 80th column differently as a wrapping guide.
 endif
 " Disable tooltips for hovering keywords in Vim
-if exists('+ballooneval')
+"if exists('+ballooneval')
 	" This doesn't seem to stop tooltips for Ruby files
-	set noballooneval
+	"set noballooneval
 	" 100 second delay seems to be the only way to disable the tooltips
-	set balloondelay=100000
-endif
-
-" ---------------
-" GUI
-" ---------------
-if has('gui_running')
-	set lines=60 columns=150
-	winpos 200 100
-endif
+	"set balloondelay=100000
+"endif
 
 " ---------------
 " Behaviors
@@ -68,7 +60,7 @@ set wildmenu           " Turn on WiLd menu
 set hidden             " Change buffer - without saving
 set history=768        " Number of things to remember in history.
 set cf                 " Enable error files & error jumping.
-set clipboard+=unnamed " Yanks go on clipboard instead.
+" set clipboard+=unnamed " Yanks go on clipboard instead.
 set autowrite          " Writes on make/shell commands
 set timeoutlen=450     " Time to wait for a command (after leader for example).
 " set nofoldenable       " Disable folding entirely.
