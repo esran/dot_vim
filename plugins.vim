@@ -7,8 +7,8 @@
 " ---------------
 command! ReloadVundle source ~/.vim/vundle.vim
 function BundleReloadAndRun(command)
-  :ReloadVundle
-  execute a:command
+	:ReloadVundle
+	execute a:command
 endfunction
 
 nnoremap <Leader>bi :call BundleReloadAndRun("BundleInstall")<CR>
@@ -28,8 +28,8 @@ let g:syntastic_enable_signs = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height = 5
 let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': [],
-                           \ 'passive_filetypes': [] }
+			\ 'active_filetypes': [],
+			\ 'passive_filetypes': [] }
 let g:syntastic_html_checkers = ['handlebars']
 
 " Hat tip http://git.io/SPIBfg
@@ -49,7 +49,7 @@ let g:NERDTreeMinimalUI = 1
 let g:NERDTreeIgnore = [ '\~$', '.o$[[file]]' ]
 " Close Vim if NERDTree is the last buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
-  \&& b:NERDTreeType == "primary") | q | endif
+			\&& b:NERDTreeType == "primary") | q | endif
 
 " ---------------
 " Indent Guides
@@ -128,22 +128,33 @@ let g:airline_powerline_fonts = 1
 let g:airline_detect_modified = 1
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#hunks#enabled = 0
+" let g:airline#extensions#tabline#enabled = 1
 let g:airline_mode_map = {
-      \ 'n'  : 'N',
-      \ 'i'  : 'I',
-      \ 'R'  : 'R',
-      \ 'v'  : 'V',
-      \ 'V'  : 'VL',
-      \ 'c'  : 'CMD',
-      \ '' : 'VB',
-      \ }
-" Show the current working directory folder name
-let g:airline_section_b = '%{substitute(getcwd(), ".*\/", "", "g")} '
+			\ 'n'  : 'N',
+			\ 'i'  : 'I',
+			\ 'R'  : 'R',
+			\ 'v'  : 'V',
+			\ 'V'  : 'VL',
+			\ 'c'  : 'CMD',
+			\ '' : 'VB',
+			\ }
+
+" Function to get relative path of current file
+function! Relpath(filename)
+	let cwd = getcwd()
+	let s = substitute(a:filename, l:cwd . "/" , "", "")
+	return s
+endfunction
+
+" Show the relative path
+" let g:airline_section_c = '%{substitute(getcwd(), ".*\/", "", "g")} '
+let g:airline_section_c = '%{Relpath(expand("%:p"))}'
 " Just show the file name
-let g:airline_section_c = '%t'
-let g:airline_section_y = ''
-let g:airline_section_z = '%3p%% %#__accent_bold#%4l%#__restore__#:%3'
-let g:airline_section_z = '%3p%% %{substitute(line("."), "\\v(\\d)((\\d\\d\\d)+\\d@!)@=", "\\1,", "g")}|%{substitute(line("$"), "\\v(\\d)((\\d\\d\\d)+\\d@!)@=", "\\1,", "g")}'
+" let g:airline_section_d = '%t'
+" let g:airline_section_y = ''
+" let g:airline_section_z = '%3p%% %#__accent_bold#%4l%#__restore__#:%3'
+" let g:airline_section_z = '%3p%% %{col(".")} %{substitute(line("."), "\\v(\\d)((\\d\\d\\d)+\\d@!)@=", "\\1,", "g")}|%{substitute(line("$"), "\\v(\\d)((\\d\\d\\d)+\\d@!)@=", "\\1,", "g")}'
+let g:airline_section_z = '%3p%% %{col(".")} %{line(".")}|%{line("$")}'
 
 " ---------------
 " jellybeans.vim colorscheme tweaks
@@ -211,7 +222,7 @@ nnoremap gcp <Plug>UnconditionalPasteCharAfter
 " Gist.vim
 " ---------------
 if has('macunix') || has('mac')
-  let g:gist_clip_command = 'pbcopy'
+	let g:gist_clip_command = 'pbcopy'
 endif
 let g:gist_post_private = 1
 
@@ -219,13 +230,13 @@ let g:gist_post_private = 1
 " MatchTagAlways
 " ---------------
 let g:mta_filetypes = {
-    \ 'html' : 1,
-    \ 'xhtml' : 1,
-    \ 'xml' : 1,
-    \ 'handlebars' : 1,
-    \ 'eruby' : 1,
-    \ 'sgml' : 1
-    \}
+			\ 'html' : 1,
+			\ 'xhtml' : 1,
+			\ 'xml' : 1,
+			\ 'handlebars' : 1,
+			\ 'eruby' : 1,
+			\ 'sgml' : 1
+			\}
 
 " ---------------
 " YouCompleteMe
@@ -234,9 +245,9 @@ let g:ycm_complete_in_comments = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_filetype_specific_completion_to_disable = {
-    \ 'ruby' : 1,
-    \ 'javascript' : 1,
-    \}
+			\ 'ruby' : 1,
+			\ 'javascript' : 1,
+			\}
 " Don't want preview window
 let g:ycm_add_preview_to_completeopt = 0
 " Disable the diagnostics as it currently
@@ -258,16 +269,16 @@ let g:signify_sign_overwrite = 0
 " vim-startify
 " ---------------
 let g:startify_list_order = [
-        \ ['   Recent'],
-        \ 'files',
-        \ ['   Last modified'],
-        \ 'dir',
-        \ ]
+			\ ['   Recent'],
+			\ 'files',
+			\ ['   Last modified'],
+			\ 'dir',
+			\ ]
 let g:startify_skiplist = [
-            \ 'COMMIT_EDITMSG',
-            \ $VIMRUNTIME .'/doc',
-            \ 'bundle/.*/doc',
-            \ ]
+			\ 'COMMIT_EDITMSG',
+			\ $VIMRUNTIME .'/doc',
+			\ 'bundle/.*/doc',
+			\ ]
 let g:startify_files_number = 10
 let g:startify_custom_indices = ['a', 'd', 'f', 'g', 'h']
 let g:startify_change_to_dir = 0
@@ -280,11 +291,11 @@ hi StartifySlash   ctermfg=240
 
 " Show Startify and NERDTree on start
 autocmd VimEnter *
-            \ if !argc() |
-            \   Startify |
-            \   NERDTree |
-            \   execute "normal \<c-w>w" |
-            \ endif
+			\ if !argc() |
+			\   Startify |
+			\   NERDTree |
+			\   execute "normal \<c-w>w" |
+			\ endif
 " Keep NERDTree from opening a split when startify is open
 autocmd FileType startify setlocal buftype=
 
@@ -320,69 +331,69 @@ nnoremap <leader>esl :Espec lib/
 " Add custom commands for Rails.vim
 " Thanks to http://git.io/_cBVeA and http://git.io/xIKnCw
 let g:rails_projections = {
-      \ 'app/models/*.rb': {'keywords': 'validates_conditional'},
-      \ 'db/seeds/*.rb': {'command': 'seeds'},
-      \ 'app/concerns/*.rb': {'command': 'concern'},
-      \ 'spec/support/*.rb': {'command': 'support'},
-      \ 'db/seeds.rb': {'command': 'seeds'}}
+			\ 'app/models/*.rb': {'keywords': 'validates_conditional'},
+			\ 'db/seeds/*.rb': {'command': 'seeds'},
+			\ 'app/concerns/*.rb': {'command': 'concern'},
+			\ 'spec/support/*.rb': {'command': 'support'},
+			\ 'db/seeds.rb': {'command': 'seeds'}}
 
 let g:rails_gem_projections = {
-      \ "factory_girl_rails": {
-      \   "spec/factories.rb": {"command": "factory"},
-      \   "spec/factories/*_factory.rb": {
-      \     "command": "factory",
-      \     "affinity": "model",
-      \     "alternate": "app/models/%s.rb",
-      \     "related": "db/schema.rb#%p",
-      \     "test": "spec/models/%s_spec.rb",
-      \     "template": "FactoryGirl.define do\n  factory :%s do\n  end\nend",
-      \     "keywords": "factory sequence"
-      \   },
-      \   "spec/factories/*.rb": {
-      \     "command": "factory",
-      \     "affinity": "collection",
-      \     "alternate": "app/models/%o.rb",
-      \     "related": "db/schema.rb#%s",
-      \     "test": "spec/models/%o_spec.rb",
-      \     "template": "FactoryGirl.define do\n  factory :%o do\n  end\nend",
-      \     "keywords": "factory sequence"
-      \   },
-      \  },
-      \ "fabrication": {
-      \   "spec/fabricators/*_fabricator.rb": {
-      \     "command": "fabricator",
-      \     "affinity": "model",
-      \     "alternate": "app/models/%s.rb",
-      \     "related": "db/schema.rb#%p",
-      \     "test": "spec/models/%s_spec.rb",
-      \     "template": "Fabricator(:%s) do\nend",
-      \     "keywords": "sequence initialize_with on_init transient after_build before_validation after_validation before_save before_create after_create after_save"
-      \   },
-      \ },
-      \ "draper": {
-      \   "app/decorators/*_decorator.rb": {
-      \     "command": "decorator",
-      \     "affinity": "model",
-      \     "test": "spec/decorators/%s_spec.rb",
-      \     "related": "app/models/%s.rb",
-      \     "template": "class %SDecorator < Draper::Decorator\nend"
-      \   }
-      \ },
-      \ "cucumber-rails": {
-      \   "features/*.feature": {"command": "feature"},
-      \   "features/step_definitions/*_steps.rb": {"command": "steps"},
-      \   "features/support/*.rb": {"command": "support"}
-      \ },
-      \ "active_model_serializers": {
-      \   "app/serializers/*_serializer.rb": {
-      \     "command": "serializer",
-      \     "affinity": "model",
-      \     "test": "spec/serializers/%s_spec.rb",
-      \     "related": "app/models/%s.rb",
-      \     "template": "class %SSerializer < ActiveModel::Serializer\n  attributes :id\nend",
-      \     "keywords": "attributes embed has_many has_one"
-      \   }
-      \ }}
+			\ "factory_girl_rails": {
+			\   "spec/factories.rb": {"command": "factory"},
+			\   "spec/factories/*_factory.rb": {
+			\     "command": "factory",
+			\     "affinity": "model",
+			\     "alternate": "app/models/%s.rb",
+			\     "related": "db/schema.rb#%p",
+			\     "test": "spec/models/%s_spec.rb",
+			\     "template": "FactoryGirl.define do\n  factory :%s do\n  end\nend",
+			\     "keywords": "factory sequence"
+			\   },
+			\   "spec/factories/*.rb": {
+			\     "command": "factory",
+			\     "affinity": "collection",
+			\     "alternate": "app/models/%o.rb",
+			\     "related": "db/schema.rb#%s",
+			\     "test": "spec/models/%o_spec.rb",
+			\     "template": "FactoryGirl.define do\n  factory :%o do\n  end\nend",
+			\     "keywords": "factory sequence"
+			\   },
+			\  },
+			\ "fabrication": {
+			\   "spec/fabricators/*_fabricator.rb": {
+			\     "command": "fabricator",
+			\     "affinity": "model",
+			\     "alternate": "app/models/%s.rb",
+			\     "related": "db/schema.rb#%p",
+			\     "test": "spec/models/%s_spec.rb",
+			\     "template": "Fabricator(:%s) do\nend",
+			\     "keywords": "sequence initialize_with on_init transient after_build before_validation after_validation before_save before_create after_create after_save"
+			\   },
+			\ },
+			\ "draper": {
+			\   "app/decorators/*_decorator.rb": {
+			\     "command": "decorator",
+			\     "affinity": "model",
+			\     "test": "spec/decorators/%s_spec.rb",
+			\     "related": "app/models/%s.rb",
+			\     "template": "class %SDecorator < Draper::Decorator\nend"
+			\   }
+			\ },
+			\ "cucumber-rails": {
+			\   "features/*.feature": {"command": "feature"},
+			\   "features/step_definitions/*_steps.rb": {"command": "steps"},
+			\   "features/support/*.rb": {"command": "support"}
+			\ },
+			\ "active_model_serializers": {
+			\   "app/serializers/*_serializer.rb": {
+			\     "command": "serializer",
+			\     "affinity": "model",
+			\     "test": "spec/serializers/%s_spec.rb",
+			\     "related": "app/models/%s.rb",
+			\     "template": "class %SSerializer < ActiveModel::Serializer\n  attributes :id\nend",
+			\     "keywords": "attributes embed has_many has_one"
+			\   }
+			\ }}
 
 " ---------------
 " UltiSnips
@@ -407,8 +418,8 @@ nnoremap <leader>cu :call VimuxRunCommand("spring cucumber")<CR>
 nnoremap <leader>ca :call VimuxRunCommand("spring cucumber; spring rspec")<CR>
 nnoremap <leader>cm :VimuxPromptCommand<CR>
 function WriteAndVimuxRunLastCommand()
-  :call WriteBufferIfNecessary()
-  :call VimuxRunLastCommand()
+	:call WriteBufferIfNecessary()
+	:call VimuxRunLastCommand()
 endfunction
 nnoremap <leader>w :call WriteAndVimuxRunLastCommand()<CR>
 command! REmigrate :call VimuxRunCommand("rake db:drop db:create db:migrate test:prepare")
