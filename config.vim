@@ -8,8 +8,8 @@
 " Don't tweak color settings unless we have the gui
 " otherwise stuff becomes unreadable.
 if has('gui_running')
-	set background=dark
-	colorscheme jellybeans
+	" set background=dark
+	" colorscheme jellybeans
 endif
 " Force 256 color mode if available
 if $TERM =~ "-256color"
@@ -31,8 +31,8 @@ endif
 " ---------------
 " UI
 " ---------------
-set noruler          " Ruler on
-set nonumber         " Line numbers on
+set noruler          " Ruler off
+set nonumber         " Line numbers off
 set nowrap         " Line wrapping off
 set laststatus=2   " Always show the statusline
 set cmdheight=2    " Make the command area two lines high
@@ -57,14 +57,14 @@ syntax enable
 set backup             " Turn on backups
 set autoread           " Automatically reload changes if detected
 set wildmenu           " Turn on WiLd menu
-set wildmode=longest:full,full
+set wildmode=longest:full,full " alternatively just full
 set hidden             " Change buffer - without saving
 set history=768        " Number of things to remember in history.
 set cf                 " Enable error files & error jumping.
 set autowrite          " Writes on make/shell commands
 set timeoutlen=450     " Time to wait for a command (after leader for example).
-" set nofoldenable       " Disable folding entirely.
-" set foldlevelstart=99  " I really don't like folds.
+" set nofoldenable       " Don't disable folding entirely.
+" set foldlevelstart=99  " I quite like folds.
 set formatoptions=crql
 " set iskeyword+=\$      " Add extra characters that are valid parts of variables
 set nostartofline      " Don't go to the start of the line after some commands
@@ -98,7 +98,7 @@ set incsearch  " Incremental search
 set hlsearch   " Highlight search results
 set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,
 	\.sass-cache,*.class,*.scssc,*.cssc,sprockets%*,*.lessc,*/node_modules/*,
-	\rake-pipeline-*
+	\rake-pipeline-*,.check.*
 
 " ---------------
 " Visual
@@ -106,7 +106,7 @@ set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,
 set showmatch   " Show matching brackets.
 set matchtime=2 " How many tenths of a second to blink
 " Show invisible characters
-set nolist
+set list
 
 " Show trailing spaces as dots and carrots for extended lines.
 " From Janus, http://git.io/PLbAlw
@@ -114,7 +114,7 @@ set nolist
 " Reset the listchars
 set listchars=""
 " make tabs visible
-set listchars=tab:▸▸
+set listchars=tab:▸.
 " show trailing spaces as dots
 set listchars+=trail:.
 " The character to show in the last column when wrap is off and the line
@@ -141,10 +141,3 @@ set mouse=a    " Mouse in all modes
 set complete=.,w,b,u,U
 set completeopt-=preview
 
-" ----
-" Host
-" ----
-let s:host_vimrc = $HOME . '/.vim/host/vimrc_' . hostname()
-if filereadable(s:host_vimrc)
-	execute 'source ' . s:host_vimrc
-endif

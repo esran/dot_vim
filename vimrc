@@ -24,3 +24,9 @@ source ~/.vim/plugins.vim
 source ~/.vim/functions.vim
 " Auto commands.
 source ~/.vim/autocmds.vim
+
+" Load a host specific file, if present
+let s:host_vimrc = $HOME . '/.vim/host/vimrc_' . hostname()
+if filereadable(s:host_vimrc)
+	execute 'source ' . s:host_vimrc
+endif

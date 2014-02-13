@@ -123,12 +123,13 @@ nnoremap <leader>m :CtrlPMRUFiles<CR>
 " ---------------
 " airline
 " ---------------
-let g:airline_theme = 'jellybeans'
+" let g:airline_theme = 'jellybeans'
 let g:airline_powerline_fonts = 1
 let g:airline_detect_modified = 1
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#hunks#enabled = 0
-" let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_mode_map = {
 			\ 'n'  : 'N',
 			\ 'i'  : 'I',
@@ -139,16 +140,7 @@ let g:airline_mode_map = {
 			\ '' : 'VB',
 			\ }
 
-" Function to get relative path of current file
-function! Relpath(filename)
-	let cwd = getcwd()
-	let s = substitute(a:filename, l:cwd . "/" , "", "")
-	return s
-endfunction
-
-" Show the relative path
-" let g:airline_section_c = '%{substitute(getcwd(), ".*\/", "", "g")} '
-let g:airline_section_c = '%{Relpath(expand("%:p"))}'
+let g:airline_section_c = '%t'
 " Just show the file name
 " let g:airline_section_d = '%t'
 " let g:airline_section_y = ''
