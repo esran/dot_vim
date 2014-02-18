@@ -31,6 +31,7 @@ let g:syntastic_mode_map = { 'mode': 'active',
 			\ 'active_filetypes': [],
 			\ 'passive_filetypes': [] }
 let g:syntastic_html_checkers = ['handlebars']
+let g:syntastic_c_remove_include_errors = 0
 
 " Hat tip http://git.io/SPIBfg
 let g:syntastic_error_symbol = '✗'
@@ -54,7 +55,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
 " ---------------
 " Indent Guides
 " ---------------
-let g:indent_guides_enable_on_vim_startup = 1
+" let g:indent_guides_enable_on_vim_startup = 1
 
 " ---------------
 " Session
@@ -242,9 +243,7 @@ let g:ycm_filetype_specific_completion_to_disable = {
 			\}
 " Don't want preview window
 let g:ycm_add_preview_to_completeopt = 0
-" Disable the diagnostics as it currently
-" clobbers signify markers :(
-let g:ycm_show_diagnostics_ui = 0
+let g:ycm_show_diagnostics_ui = 1
 
 " ---------------
 " vim-signify
@@ -488,3 +487,8 @@ let g:csv_highlight_column = 'y'
 augroup filetypedetect
 	au! BufRead,BufNewFile *.tbl 	setfiletype csv
 augroup END
+
+" -------
+" indexer
+" -------
+let g:indexer_disableCtagsWarning = 1

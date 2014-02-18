@@ -19,6 +19,7 @@ Bundle 'gmarik/vundle'
 Bundle 'ZoomWin'
 Bundle 'kien/ctrlp.vim'
 Bundle 'JazzCore/ctrlp-cmatcher'
+Bundle 'chazy/cscope_maps'
 " UI Additions
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'bling/vim-airline'
@@ -29,6 +30,7 @@ Bundle 'mhinz/vim-signify'
 Bundle 'mhinz/vim-startify'
 Bundle 'mbbill/undotree'
 Bundle 'jszakmeister/vim-togglecursor'
+Bundle 'jewes/Conque-Shell'
 " Commands
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-surround'
@@ -65,10 +67,16 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
 Bundle 'ervandew/supertab'
 Bundle 'Valloric/MatchTagAlways'
-" Bundle 'Valloric/YouCompleteMe'
+" YCM needs a higher vim version
+if version >= 704
+	Bundle 'Valloric/YouCompleteMe'
+endif
 Bundle 'mutewinter/vim-autoreadwatch'
-Bundle 'szw/vim-tags'
+" Bundle 'szw/vim-tags'
 Bundle 'majutsushi/tagbar'
+Bundle 'DfrankUtil'
+Bundle 'vimprj'
+Bundle 'indexer.tar.gz'
 " Language Additions
 "   Ruby
 Bundle 'vim-ruby/vim-ruby'

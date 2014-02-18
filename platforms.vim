@@ -33,9 +33,6 @@ elseif has('gui_macvim')
 	" Use option (alt) as meta key.
 	set macmeta
 elseif has('gui_gtk2')
-	set lines=60 columns=150
-	set guioptions=egmrt
-	winpos 200 100
 	set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 11
 endif
 

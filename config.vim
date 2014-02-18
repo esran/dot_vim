@@ -8,6 +8,9 @@
 " Don't tweak color settings unless we have the gui
 " otherwise stuff becomes unreadable.
 if has('gui_running')
+	set lines=60 columns=150
+	set guioptions=egmrt
+	winpos 200 100
 	" set background=dark
 	" colorscheme jellybeans
 endif
@@ -66,7 +69,7 @@ set timeoutlen=450     " Time to wait for a command (after leader for example).
 " set nofoldenable       " Don't disable folding entirely.
 " set foldlevelstart=99  " I quite like folds.
 set formatoptions=crql
-" set iskeyword+=\$      " Add extra characters that are valid parts of variables
+set iskeyword+=\$      " Add extra characters that are valid parts of variables
 set nostartofline      " Don't go to the start of the line after some commands
 set scrolloff=3        " Keep three lines below the last line when scrolling
 " set gdefault           " this makes search/replace global by default
@@ -106,7 +109,7 @@ set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,
 set showmatch   " Show matching brackets.
 set matchtime=2 " How many tenths of a second to blink
 " Show invisible characters
-set list
+set nolist
 
 " Show trailing spaces as dots and carrots for extended lines.
 " From Janus, http://git.io/PLbAlw
