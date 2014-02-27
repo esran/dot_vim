@@ -1,6 +1,8 @@
 /bundle
 /host
 /sessions
+/eclim
+/plugin
 .DS_Store
 
 /.netrwhist

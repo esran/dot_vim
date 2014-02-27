@@ -31,6 +31,7 @@ Bundle 'mhinz/vim-startify'
 Bundle 'mbbill/undotree'
 Bundle 'jszakmeister/vim-togglecursor'
 Bundle 'jewes/Conque-Shell'
+Bundle 'edkolev/promptline.vim'
 " Commands
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-surround'
@@ -60,12 +61,13 @@ Bundle 'dsawardekar/portkey'
 Bundle 'dsawardekar/ember.vim'
 Bundle 'rizzatti/dash.vim'
 Bundle 'tpope/vim-dispatch'
+Bundle 'keepcase.vim'
+Bundle 'Shortcut-functions-for-KeepCase-script-'
 " Automatic Helpers
 Bundle 'osyo-manga/vim-anzu'
 Bundle 'xolox/vim-session'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
-Bundle 'ervandew/supertab'
 Bundle 'Valloric/MatchTagAlways'
 " YCM needs a higher vim version
 if version >= 704

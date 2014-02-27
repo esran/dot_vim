@@ -129,6 +129,7 @@ let g:airline_powerline_fonts = 1
 let g:airline_detect_modified = 1
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#hunks#enabled = 0
+let g:airline#extensions#eclim#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_mode_map = {
@@ -148,6 +149,10 @@ let g:airline_section_c = '%t'
 " let g:airline_section_z = '%3p%% %#__accent_bold#%4l%#__restore__#:%3'
 " let g:airline_section_z = '%3p%% %{col(".")} %{substitute(line("."), "\\v(\\d)((\\d\\d\\d)+\\d@!)@=", "\\1,", "g")}|%{substitute(line("$"), "\\v(\\d)((\\d\\d\\d)+\\d@!)@=", "\\1,", "g")}'
 let g:airline_section_z = '%3p%% %{col(".")} %{line(".")}|%{line("$")}'
+
+" Tabline
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#excludes = [ '\[No Name\]', '__Tagbar__' ]
 
 " ---------------
 " jellybeans.vim colorscheme tweaks
@@ -244,6 +249,7 @@ let g:ycm_filetype_specific_completion_to_disable = {
 " Don't want preview window
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_show_diagnostics_ui = 1
+let g:ycm_extra_conf_globlist = [ '~/Work/*' ]
 
 " ---------------
 " vim-signify
@@ -492,3 +498,9 @@ augroup END
 " indexer
 " -------
 let g:indexer_disableCtagsWarning = 1
+
+" -----
+" eclim
+" -----
+let g:EclimCompletionMethod = 'omnifunc'
+
