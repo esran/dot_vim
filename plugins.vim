@@ -130,8 +130,8 @@ let g:airline_detect_modified = 1
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#eclim#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_mode_map = {
 			\ 'n'  : 'N',
 			\ 'i'  : 'I',
@@ -151,8 +151,8 @@ let g:airline_section_c = '%t'
 let g:airline_section_z = '%3p%% %{col(".")} %{line(".")}|%{line("$")}'
 
 " Tabline
-let g:airline#extensions#tabline#show_tab_nr = 1
-let g:airline#extensions#tabline#excludes = [ '\[No Name\]', '__Tagbar__' ]
+" let g:airline#extensions#tabline#show_tab_nr = 1
+" let g:airline#extensions#tabline#excludes = [ '\[No Name\]', '__Tagbar__' ]
 
 " ---------------
 " jellybeans.vim colorscheme tweaks
