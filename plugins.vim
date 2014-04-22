@@ -24,6 +24,7 @@ let g:space_disable_select_mode = 1
 " ---------------
 " Syntastic
 " ---------------
+let g:syntastic_enable_perl_checker = 1
 let g:syntastic_enable_signs = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height = 5
@@ -124,12 +125,14 @@ nnoremap <leader>m :CtrlPMRUFiles<CR>
 " ---------------
 " airline
 " ---------------
-" let g:airline_theme = 'jellybeans'
+" let g:airline_theme = 'solarized'
 let g:airline_powerline_fonts = 1
 let g:airline_detect_modified = 1
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#eclim#enabled = 1
+let g:airline#extensions#tmuxline#enabled = 1
+let airline#extensions#tmuxline#snapshot_file = "~/.tmux-statusline-colors.conf"
 " let g:airline#extensions#tabline#enabled = 1
 " let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_mode_map = {
@@ -149,6 +152,13 @@ let g:airline_section_c = '%t'
 " let g:airline_section_z = '%3p%% %#__accent_bold#%4l%#__restore__#:%3'
 " let g:airline_section_z = '%3p%% %{col(".")} %{substitute(line("."), "\\v(\\d)((\\d\\d\\d)+\\d@!)@=", "\\1,", "g")}|%{substitute(line("$"), "\\v(\\d)((\\d\\d\\d)+\\d@!)@=", "\\1,", "g")}'
 let g:airline_section_z = '%3p%% %{col(".")} %{line(".")}|%{line("$")}'
+
+" Fix airline whitespace display
+" if !exists('g:airline_symbols')
+"   let g:airline_symbols = {}
+" endif
+" let g:airline_symbols.space = "\ua0"
+" let g:airline_whitepsace_symbol = '!'
 
 " Tabline
 " let g:airline#extensions#tabline#show_tab_nr = 1
@@ -444,12 +454,12 @@ vnoremap <silent><leader>cb :TCommentBlock<CR>
 " --------------
 " tmux navigator
 " --------------
-let g:tmux_navigator_no_mappings = 1
+"let g:tmux_navigator_no_mappings = 1
 
-nnoremap <silent> <M-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <M-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
+"nnoremap <silent> <M-h> :TmuxNavigateLeft<cr>
+"nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
+"nnoremap <silent> <M-k> :TmuxNavigateUp<cr>
+"nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
 
 " ------
 " ColorV

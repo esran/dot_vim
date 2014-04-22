@@ -45,3 +45,11 @@ if has('macunix') || has('mac')
 		let c = nr2char(1+char2nr(c))
 	endw
 endif
+
+if &term =~ '^screen'
+    " tmux will send xterm-style keys when xterm-keys is on
+    execute "set <xUp>=\e[1;*A"
+    execute "set <xDown>=\e[1;*B"
+    execute "set <xRight>=\e[1;*C"
+    execute "set <xLeft>=\e[1;*D"
+endif

@@ -14,10 +14,9 @@ if has('gui_running')
 	" set background=dark
 	" colorscheme jellybeans
 endif
-" Force 256 color mode if available
-if $TERM =~ "-256color"
-	set t_Co=256
-endif
+
+set t_Co=256
+colorscheme solarized
 
 " -----------------------------
 " File Locations
