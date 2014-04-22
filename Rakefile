@@ -90,12 +90,13 @@ def write_lines_to_readme(lines)
   readme_file.close
 end
 
-# Returns an array of plugins denoted with Bundle
+# Returns an array of plugins denoted with Plugin
 def parse_plugins_from_vimrc
   plugins = []
   File.new('vundle.vim').each do |line|
-    if line =~ /^Bundle\s+["'](.+)["']/
+    if line =~ /^Plugin\s+["'](.+)["']/
       plugins << convert_to_link_hash($1)
+      print '.'
     end
   end
 
@@ -134,10 +135,16 @@ def fetch_github_repo_description(user, name)
     api_url += "?client_id=#{ENV['GITHUB_CLIENT_ID']}&client_secret=#{ENV['GITHUB_CLIENT_SECRET']}"
   end
 
-  if RUBY_VERSION < '1.9'
-    response = open(api_url).read
-  else
-    response = open(api_url, :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE).read
+  begin
+    if RUBY_VERSION < '1.9'
+      response = open(api_url).read
+    else
+      response = open(api_url, :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE).read
+    end
+  rescue Exception => e
+    message = "Problem fetching #{user}/#{name}."
+    puts message + e.message
+    return message
   end
 
   repo = JSON.parse response
