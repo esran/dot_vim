@@ -64,7 +64,7 @@ set hidden             " Change buffer - without saving
 set history=768        " Number of things to remember in history.
 set cf                 " Enable error files & error jumping.
 set autowrite          " Writes on make/shell commands
-set timeoutlen=450     " Time to wait for a command (after leader for example).
+" set timeoutlen=450     " Time to wait for a command (after leader for example).
 set ttimeoutlen=10     " Time to wait for key codes
 " set nofoldenable       " Don't disable folding entirely.
 " set foldlevelstart=99  " I quite like folds.
@@ -87,6 +87,7 @@ set guioptions+=a
 set tabstop=4
 set backspace=indent,eol,start " Delete everything with backspace
 set shiftwidth=4 " Tabs under smart indent
+set shiftround
 set cindent
 set autoindent
 set smarttab

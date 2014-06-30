@@ -163,6 +163,9 @@ vnoremap K k
 " Toggle paste mode with F6
 nnoremap <silent> <F6> :set paste!<CR>
 
+" Insert date
+iabbrev ddate <C-R>=strftime("%Y-%m-%d")<CR>
+
 " Map f5 to change current buffers working directory to
 " match the file being edited
 nnoremap <F5> :lcd %:p:h<CR>:pwd<CR>
