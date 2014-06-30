@@ -525,3 +525,8 @@ let g:indexer_disableCtagsWarning = 1
 " -----
 let g:EclimCompletionMethod = 'omnifunc'
 
+" ------
+" cctree
+" ------
+let g:CCTreeMinVisibleDepth = 5
+let g:CCTreeRecursiveDepth = 5
