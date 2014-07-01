@@ -7,6 +7,9 @@ Various personal tweaks.
 * Default indent 4, not 2. And use tabs for that (I know, terrible!).
 * Disable YouCompleteMe. Currently clashes with other addons that set up gutter marks.
 * Add a couple of tags plugins.
+* Provide a hook for host specific configuration. (hosts/vimrc_{HOSTNAME}).
+* Function/mappings for moving buffers between tabs.
+* Tweak GUI parameters and have them work on non-Mac too.
 
 Version 3! Now each plugin is included and managed in its
 [own file](vundle_plugins)!
@@ -14,10 +17,6 @@ Version 3! Now each plugin is included and managed in its
 [![iTerm][ss]][ss]
 
 [ss]: https://github.com/mutewinter/dot_vim/raw/master/screenshots/iTerm.png
-
-* Provide a hook for host specific configuration. (hosts/vimrc_{HOSTNAME}).
-* Function/mappings for moving buffers between tabs.
-* Tweak GUI parameters and have them work on non-Mac too.
 
 ## Installation
 
