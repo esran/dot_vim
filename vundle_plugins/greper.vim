@@ -4,6 +4,8 @@
 " URL:
 " =============================================================================
 
+finish
+
 if exists('g:vundle_installing_plugins')
 	Plugin 'rizzatti/funcoo.vim'
 	Plugin 'rizzatti/greper.vim'
