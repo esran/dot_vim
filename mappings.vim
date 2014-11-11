@@ -7,14 +7,6 @@
 let mapleader=","
 let maplocalleader = "\\"
 
-" -----------------------
-" Unmapped While Learning
-" -----------------------
-
-" No-op ^ and $ while learning H and L
-noremap ^ <nop>
-noremap $ <nop>
-
 " ---------------
 " Regular Mappings
 " ---------------
