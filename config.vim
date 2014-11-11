@@ -17,6 +17,10 @@ endif
 
 set t_Co=256
 colorscheme solarized
+" Search highlighting. Overriding solarized
+autocmd ColorScheme * hi Search gui=underline guifg=#f0a0c0
+autocmd ColorScheme * hi Search cterm=underline ctermfg=5
+autocmd ColorScheme * hi Search term=none
 
 " -----------------------------
 " File Locations
