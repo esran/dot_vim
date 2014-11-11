@@ -7,6 +7,8 @@
 let mapleader=","
 let maplocalleader = "\\"
 
+nnoremap <leader>sc <nop>
+
 " ---------------
 " Regular Mappings
 " ---------------
