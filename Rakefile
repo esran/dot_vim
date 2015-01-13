@@ -1,3 +1,4 @@
+#encoding: utf-8
 # Rakefile
 #
 # Tasks for managing dot_vim.
@@ -157,7 +158,7 @@ def fetch_plugin_info(vundle_link)
   plugin_info = repo_info(github_user, github_repo)
   info[:description] = plugin_info['description'].strip
   info[:stars] = plugin_info['stargazers_count']
-  info[:stars_text] = "#{comma_number(plugin_info['stargazers_count'])} :star:"
+  info[:stars_text] = "#{comma_number(plugin_info['stargazers_count'])} ★"
 
   info
 end
@@ -181,7 +182,11 @@ def repo_info(user, name)
     if RUBY_VERSION < '1.9'
       response = open(api_url).read
     else
-      response = open(api_url, :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE).read
+		if ENV['GITHUB_DOT_VIM_TOKEN']
+			response = open(api_url, :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE, "Authorization" => "token #{ENV['GITHUB_DOT_VIM_TOKEN']}").read
+		else
+			response = open(api_url, :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE).read
+		end
     end
   rescue Exception => e
     message = "Problem fetching #{user}/#{name}."
