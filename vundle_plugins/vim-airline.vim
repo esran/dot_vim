@@ -51,3 +51,6 @@ let airline#extensions#tmuxline#snapshot_file = "~/.tmux-statusline-colors.conf"
 " Tabline
 " let g:airline#extensions#tabline#show_tab_nr = 1
 " let g:airline#extensions#tabline#excludes = [ '\[No Name\]', '__Tagbar__' ]
+
+" specify mixed indent mode so as not to get hassled about C block comments
+let g:airline#extensions#whitespace#mixed_indent_algo = 1
