@@ -185,8 +185,9 @@ nnoremap <F9> :cnext<CR>
 "--------------------
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
-" Insert a console.log
+" Insert a console statements
 iabbrev clg console.log
+iabbrev cld console.debug
 
 " copy current file name (relative/absolute) to system clipboard
 " from http://stackoverflow.com/a/17096082/22423
