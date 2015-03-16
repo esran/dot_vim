@@ -238,6 +238,15 @@ function! HiInterestingWord(n)
     normal! `z
 endfunction
 
+function! UnHiWords()
+	silent! call matchdelete(86751)
+	silent! call matchdelete(86752)
+	silent! call matchdelete(86753)
+	silent! call matchdelete(86754)
+	silent! call matchdelete(86755)
+	silent! call matchdelete(86756)
+endfunction
+
 " Mappings
 
 nnoremap <silent> <leader>1 :call HiInterestingWord(1)<cr>
@@ -246,6 +255,9 @@ nnoremap <silent> <leader>3 :call HiInterestingWord(3)<cr>
 nnoremap <silent> <leader>4 :call HiInterestingWord(4)<cr>
 nnoremap <silent> <leader>5 :call HiInterestingWord(5)<cr>
 nnoremap <silent> <leader>6 :call HiInterestingWord(6)<cr>
+
+" remove all word highlights
+nnoremap <silent> <leader>0 :call UnHiWords()<cr>
 
 " Default Highlights
 

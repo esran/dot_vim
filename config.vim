@@ -82,7 +82,7 @@ set switchbuf=useopen  " Switch to an existing buffer if one exists
 " ---------
 " Clipboard
 " ---------
-set clipboard+=autoselect " Yanks go on clipboard instead.
+" set clipboard+=autoselect " Yanks go on clipboard instead.
 set guioptions+=a
 
 " ---------------
