@@ -1,5 +1,5 @@
 " =============================================================================
-" Plugin Name: greper.vim
+" Plug Name: greper.vim
 " Description: better searching
 " URL:
 " =============================================================================
@@ -7,8 +7,8 @@
 finish
 
 if exists('g:vundle_installing_plugins')
-	Plugin 'rizzatti/funcoo.vim'
-	Plugin 'rizzatti/greper.vim'
+	Plug 'rizzatti/funcoo.vim'
+	Plug 'rizzatti/greper.vim'
 	finish
 endif
 

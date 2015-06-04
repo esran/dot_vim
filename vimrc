@@ -4,8 +4,8 @@
 " Version: 3.0 - Now each plugin is included and managed in its own file!
 " =============================================================================
 
-" All of the plugins are installed with Vundle from this file.
-source ~/.vim/vundle.vim
+" Load plugins (vim-plug)
+source ~/.vim/plug.vim
 
 " Automatically detect file types. (must turn on after Vundle)
 filetype plugin indent on

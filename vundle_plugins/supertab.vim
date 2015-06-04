@@ -1,4 +1,4 @@
 if exists('g:vundle_installing_plugins')
-  Plugin 'ervandew/supertab'
+  Plug 'ervandew/supertab'
   finish
 endif

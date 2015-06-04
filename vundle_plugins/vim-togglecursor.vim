@@ -1,5 +1,5 @@
 if exists('g:vundle_installing_plugins')
-  Plugin 'jszakmeister/vim-togglecursor'
+  Plug 'jszakmeister/vim-togglecursor'
   finish
 endif
 

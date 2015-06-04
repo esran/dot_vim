@@ -1,0 +1,3 @@
+[submodule "externals/vim-plug"]
+	path = externals/vim-plug
+	url = git@github.com:junegunn/vim-plug.git

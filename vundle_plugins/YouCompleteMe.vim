@@ -1,7 +1,7 @@
 " YCM needs at least 704
 if version >= 704
 	if exists('g:vundle_installing_plugins')
-	  Plugin 'blueyed/YouCompleteMe'
+	  Plug 'blueyed/YouCompleteMe'
 	  finish
 	endif
 

@@ -1,5 +1,5 @@
 if exists('g:vundle_installing_plugins')
-  Plugin 'chrisbra/csv.vim'
+  Plug 'chrisbra/csv.vim'
   finish
 endif
 

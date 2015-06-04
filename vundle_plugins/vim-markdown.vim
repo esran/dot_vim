@@ -1,4 +1,4 @@
 if exists('g:vundle_installing_plugins')
-  Plugin 'gabrielelana/vim-markdown'
+  Plug 'gabrielelana/vim-markdown'
   finish
 endif

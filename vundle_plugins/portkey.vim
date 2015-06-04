@@ -1,5 +1,5 @@
 if exists('g:vundle_installing_plugins')
-  Plugin 'dsawardekar/portkey'
+  Plug 'dsawardekar/portkey'
   finish
 endif
 

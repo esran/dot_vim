@@ -1,4 +1,4 @@
 if exists('g:vundle_installing_plugins')
-  Plugin 'elzr/vim-json'
+  Plug 'elzr/vim-json'
   finish
 endif

@@ -1,5 +1,5 @@
 if exists('g:vundle_installing_plugins')
-  Plugin 'benmills/vimux'
+  Plug 'benmills/vimux'
   finish
 endif
 

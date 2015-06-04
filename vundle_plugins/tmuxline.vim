@@ -1,11 +1,11 @@
 " =============================================================================
-" Plugin Name: tmuxline.vim
+" Plug Name: tmuxline.vim
 " Description: generate tmux line from airline
 " URL:
 " =============================================================================
 
 if exists('g:vundle_installing_plugins')
-	Plugin 'edkolev/tmuxline.vim'
+	Plug 'edkolev/tmuxline.vim'
 	finish
 endif
 

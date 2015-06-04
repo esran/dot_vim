@@ -1,5 +1,5 @@
 if exists('g:vundle_installing_plugins')
-  Plugin 'tpope/vim-surround'
+  Plug 'tpope/vim-surround'
   finish
 endif
 

@@ -1,5 +1,5 @@
 if exists('g:vundle_installing_plugins')
-  Plugin 'SirVer/ultisnips'
+  Plug 'SirVer/ultisnips'
   finish
 endif
 

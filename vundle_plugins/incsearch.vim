@@ -1,5 +1,5 @@
 if exists('g:vundle_installing_plugins')
-  Plugin 'haya14busa/incsearch.vim'
+  Plug 'haya14busa/incsearch.vim'
   finish
 endif
 

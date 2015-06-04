@@ -1,4 +1,4 @@
 if exists('g:vundle_installing_plugins')
-  Plugin 'tpope/vim-unimpaired'
+  Plug 'tpope/vim-unimpaired'
   finish
 endif

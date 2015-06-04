@@ -1,13 +1,13 @@
 " =============================================================================
-" Plugin Name: indexer
+" Plug Name: indexer
 " Description: auto generate tags index
 " URL:
 " =============================================================================
 
 if exists('g:vundle_installing_plugins')
-	Plugin 'DfrankUtil'
-	Plugin 'vimprj'
-	Plugin 'indexer.tar.gz'
+	Plug 'DfrankUtil'
+	Plug 'vimprj'
+	Plug 'indexer.tar.gz'
 	finish
 endif
 
