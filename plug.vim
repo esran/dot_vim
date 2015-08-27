@@ -20,9 +20,9 @@ endfor
 
 unlet g:vundle_installing_plugins
 
-" Simpler list of plugins, rather than complicated sub folder with
-" separate file for each plugin!
-
+" Plugins loaded explicitly. Much easier then scanning a sub folder
+Plug 'wincent/ferret'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'lyuts/vim-rtags'
 
 call plug#end()
