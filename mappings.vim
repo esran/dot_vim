@@ -45,10 +45,6 @@ nnoremap U <C-r>
 nnoremap ' `
 nnoremap ` '
 
-" Use very magic (Perl-like) regex style
-" nnoremap / /\v
-" vnoremap / /\v
-
 " Don't move on *
 nnoremap <silent> * :let stay_star_view = winsaveview()<cr>*:call winrestview(stay_star_view)<cr>
 
@@ -71,8 +67,6 @@ nnoremap <silent> g3 :wincmd t<bar>:wincmd l<bar>
       \:wincmd l<CR>
 nnoremap <silent> g4 :wincmd b<CR>
 
-" Previous Window
-nnoremap <silent> gp :wincmd p<CR>
 " Equal Size Windows
 nnoremap <silent> g= :wincmd =<CR>
 " Swap Windows
@@ -145,8 +139,8 @@ nnoremap <leader>jt <Esc>:%!underscore print<CR><Esc>:set filetype=json<CR>
 nnoremap <leader>jts <Esc>:%!underscore print --strict<CR><Esc>:set filetype=json<CR>
 
 " Split window vertically or horizontally *and* switch to the new split!
-nnoremap <silent> <leader>hs :split<Bar>:wincmd j<CR>
-nnoremap <silent> <leader>vs :vsplit<Bar>:wincmd l<CR>
+nnoremap <silent> <leader>hs :split<Bar>:wincmd j<CR>:wincmd =<CR>
+nnoremap <silent> <leader>vs :vsplit<Bar>:wincmd l<CR>:wincmd =<CR>
 
 " Close the current window
 nnoremap <silent> <m-w> :close<CR>
@@ -170,6 +164,12 @@ vnoremap K k
 " Toggle paste mode with F6
 nnoremap <silent> <F6> :set paste!<CR>
 
+" Paste and select pasted
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+
+" Paste and select pasted
+nnoremap gp :normal pglp<cr>
+
 " Insert date
 iabbrev ddate <C-R>=strftime("%Y-%m-%d")<CR>
 
@@ -185,10 +185,6 @@ nnoremap <F9> :cnext<CR>
 " Source:   http://stackoverflow.com/questions/563616/vimctags-tips-and-tricks
 "--------------------
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-
-" Insert a console statements
-iabbrev clg console.log
-iabbrev cld console.debug
 
 " copy current file name (relative/absolute) to system clipboard
 " from http://stackoverflow.com/a/17096082/22423
