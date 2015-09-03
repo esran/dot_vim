@@ -1,5 +1,5 @@
 if exists('g:vundle_installing_plugins')
-  Plugin 'tyru/open-browser.vim'
+  Plug 'tyru/open-browser.vim'
   finish
 endif
 
