@@ -4,8 +4,8 @@
 
 " Set leader to ,
 " Note: This line MUST come before any <leader> mappings
-let mapleader=","
-let maplocalleader = "\\"
+let mapleader=','
+let maplocalleader = '\\'
 
 nnoremap <leader>sc <nop>
 
@@ -133,10 +133,9 @@ nnoremap <silent> <leader>cul :normal "lyy"lpwvLr-^"lyyk"lP<cr>
 " Format the entire file
 nnoremap <leader>fef mx=ggG='x
 
-" Format a json file with Python's built in json.tool.
-" from https://github.com/spf13/spf13-vim/blob/3.0/.vimrc#L390
-nnoremap <leader>jt <Esc>:%!underscore print<CR><Esc>:set filetype=json<CR>
-nnoremap <leader>jts <Esc>:%!underscore print --strict<CR><Esc>:set filetype=json<CR>
+" Format a json file with Underscore CLI
+" Inspirited by https://github.com/spf13/spf13-vim/blob/3.0/.vimrc#L390
+nnoremap <leader>gj <Esc>:%!underscore print<CR><Esc>:set filetype=json<CR>
 
 " Split window vertically or horizontally *and* switch to the new split!
 nnoremap <silent> <leader>hs :split<Bar>:wincmd j<CR>:wincmd =<CR>
@@ -165,10 +164,10 @@ vnoremap K k
 nnoremap <silent> <F6> :set paste!<CR>
 
 " Paste and select pasted
-nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+nnoremap <expr> gpp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 " Paste and select pasted
-nnoremap gp :normal pglp<cr>
+nnoremap gp :normal pgp<cr>
 
 " Insert date
 iabbrev ddate <C-R>=strftime("%Y-%m-%d")<CR>
@@ -188,7 +187,7 @@ map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 " copy current file name (relative/absolute) to system clipboard
 " from http://stackoverflow.com/a/17096082/22423
-if has("mac") || has("gui_macvim") || has("gui_mac")
+if has('mac') || has('gui_macvim') || has('gui_mac')
   " relative path  (src/foo.txt)
   nnoremap <silent> <leader>yp :let @*=expand("%")<CR>
 

@@ -66,7 +66,7 @@ set wildmenu           " Turn on WiLd menu
 set wildmode=longest:full,full " alternatively just full
 set hidden             " Change buffer - without saving
 set history=768        " Number of things to remember in history.
-set cf                 " Enable error files & error jumping.
+set confirm            " Enable error files & error jumping.
 set autowrite          " Writes on make/shell commands
 set timeoutlen=400     " Time to wait for a command (after leader for example).
 set ttimeoutlen=10     " Time to wait for key codes
