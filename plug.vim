@@ -20,14 +20,4 @@ endfor
 
 unlet g:vundle_installing_plugins
 
-" Plugins loaded explicitly. Much easier then scanning a sub folder
-
-Plug 'wincent/ferret'
-
-" Tags
-Plug 'autoload_cscope.vim'
-Plug 'chazy/cscope_maps'
-" Plug 'ludovicchabant/vim-gutentags'
-Plug 'lyuts/vim-rtags'
-
 call plug#end()

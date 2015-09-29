@@ -4,6 +4,9 @@
 " URL:
 " =============================================================================
 
+" disabling as this might be causing crashes :(
+finish
+
 if exists('g:vundle_installing_plugins')
 	Plug 'DfrankUtil'
 	Plug 'vimprj'
