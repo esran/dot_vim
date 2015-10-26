@@ -25,8 +25,8 @@ autocmd ColorScheme * hi Search term=none
 " -----------------------------
 " File Locations
 " -----------------------------
-set backupdir=~/.vim/.backup// " Double // causes backups to use full file path
-set directory=~/.vim/.tmp//
+set backupdir=~/local/vim/backup// " Double // causes backups to use full file path
+set directory=~/local/vim/tmp//
 set spellfile=~/.vim/spell/custom.en.utf-8.add
 " Persistent Undo
 if has('persistent_undo')
