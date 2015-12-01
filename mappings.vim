@@ -201,7 +201,9 @@ if has('mac') || has('gui_macvim') || has('gui_mac')
   nnoremap <silent> <leader>yd :let @*=expand("%:p:h")<CR>
 endif
 
+" --------------
 " Highlight Word
+" --------------
 "
 " This mini-plugin provides a few mappings for highlighting words temporarily.
 "
