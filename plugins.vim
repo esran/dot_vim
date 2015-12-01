@@ -75,5 +75,6 @@ call plug#begin('~/.vim/bundle')
   Plug 'nelstrom/vim-visual-star-search'
   Plug 'benmills/vimux'
   Plug 'mattn/webapi-vim'
+  Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
 call plug#end()

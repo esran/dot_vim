@@ -10,7 +10,6 @@ endif
 
 autocmd! BufWritePost * Neomake
 
-let g:neomake_open_list = 1
 let g:neomake_list_height = 5
 
 function! SetJavaScriptCheckers()
@@ -20,7 +19,7 @@ function! SetJavaScriptCheckers()
     call add(checkers, 'eslint')
   endif
 
-  if findfile('.jshint', '.;') != ''
+  if findfile('.jshintrc', '.;') != ''
     call add(checkers, 'jshint')
   endif
 
