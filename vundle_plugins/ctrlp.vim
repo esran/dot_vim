@@ -1,5 +1,5 @@
 if exists('g:vundle_installing_plugins')
-  Plug 'kien/ctrlp.vim'
+  Plug 'ctrlpvim/ctrlp.vim'
   finish
 endif
 

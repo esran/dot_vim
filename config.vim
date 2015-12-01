@@ -43,6 +43,7 @@ set noruler          " Ruler off
 set nowrap         " Line wrapping off
 set laststatus=2   " Always show the statusline
 set cmdheight=2    " Make the command area two lines high
+set cursorline     " Highlight current line
 set encoding=utf-8
 set noshowmode     " Don't show the mode since Powerline shows it
 set title          " Set the title of the window in the terminal to the file
@@ -150,3 +151,25 @@ set mouse=a    " Mouse in all modes
 set complete=.,w,b,u,U
 set completeopt-=preview
 
+
+" ------------
+" Cursor stuff
+" https://github.com/blaenk/dots/blob/9843177fa6155e843eb9e84225f458cd0205c969/vim/vimrc.ln#L49-L64
+" http://www.blaenkdenum.com/posts/a-simpler-vim-statusline/
+" ------------
+set gcr=a:block
+
+" mode aware cursors
+set gcr+=o:hor50-Cursor
+set gcr+=n:Cursor
+set gcr+=i-ci-sm:InsertCursor
+set gcr+=r-cr:ReplaceCursor-hor20
+set gcr+=c:CommandCursor
+set gcr+=v-ve:VisualCursor
+
+set gcr+=a:blinkon0
+
+hi InsertCursor  ctermfg=15 guifg=#fdf6e3 ctermbg=37  guibg=#2aa198
+hi VisualCursor  ctermfg=15 guifg=#fdf6e3 ctermbg=125 guibg=#d33682
+hi ReplaceCursor ctermfg=15 guifg=#fdf6e3 ctermbg=65  guibg=#dc322f
+hi CommandCursor ctermfg=15 guifg=#fdf6e3 ctermbg=166 guibg=#cb4b16

@@ -5,7 +5,7 @@
 " Set leader to ,
 " Note: This line MUST come before any <leader> mappings
 let mapleader=','
-let maplocalleader = '\\'
+let maplocalleader = ' '
 
 nnoremap <leader>sc <nop>
 
@@ -80,10 +80,10 @@ nnoremap <silent> gx :wincmd x<CR>
 inoremap <C-l> <C-x><C-l>
 
 " Scroll larger amounts with C-j / C-k
-nnoremap <C-j> 15gjzz
-nnoremap <C-k> 15gkzz
-vnoremap <C-j> 15gjzz
-vnoremap <C-k> 15gkzz
+nnoremap gj 15gjzz
+nnoremap gk 15gkzz
+vnoremap gj 15gjzz
+vnoremap gk 15gkzz
 
 " ---------------
 " Insert Mode Mappings
@@ -201,7 +201,9 @@ if has('mac') || has('gui_macvim') || has('gui_mac')
   nnoremap <silent> <leader>yd :let @*=expand("%:p:h")<CR>
 endif
 
+" --------------
 " Highlight Word
+" --------------
 "
 " This mini-plugin provides a few mappings for highlighting words temporarily.
 "
