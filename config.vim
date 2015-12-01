@@ -37,8 +37,9 @@ endif
 " ---------------
 " UI
 " ---------------
+set number			" Line numbers
+set relativenumber 	" Relative line numbers
 set noruler          " Ruler off
-set nonumber         " Line numbers off
 set nowrap         " Line wrapping off
 set laststatus=2   " Always show the statusline
 set cmdheight=2    " Make the command area two lines high
