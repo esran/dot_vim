@@ -180,6 +180,18 @@ let g:UltiSnipsJumpBackwardTrigger='<C-h>'
 let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
+" For ag or ack.
+if executable('ag')
+  " let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --hidden -g ""'
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nocolor -t --noheading -S -i'
+  let g:unite_source_grep_recursive_opt = ''
+elseif executable('ack-grep')
+  let g:unite_source_grep_command = 'ack-grep'
+  let g:unite_source_grep_default_opts = '--no-heading --no-color -a -H -i'
+  let g:unite_source_grep_recursive_opt = '-r'
+endif
+
 " ----------
 " Easymotion
 " ----------
@@ -308,33 +320,33 @@ let g:ycm_extra_conf_globlist = [ '~/work/*', '/home/local/sean/Work/*' ]
 " -------
 " neomake
 " -------
-autocmd! BufWritePost * Neomake
-
-let g:neomake_list_height = 5
-
-function! SetJavaScriptCheckers()
-  let checkers = []
-
-  if findfile('.eslintrc', '.;') != ''
-    call add(checkers, 'eslint')
-  endif
-
-  if findfile('.jshintrc', '.;') != ''
-    call add(checkers, 'jshint')
-  endif
-
-  if findfile('.jscsrc', '.;') != ''
-    call add(checkers, 'jscs')
-  endif
-
-  if finddir('ProjectSettings', '.;') != ''
-    call add(checkers, 'unityscript')
-  endif
-
-  let g:neomake_javascript_enabled_makers = checkers
-endfunction
-
-autocmd FileType javascript call SetJavaScriptCheckers()
+" autocmd! BufWritePost * Neomake
+"
+" let g:neomake_list_height = 5
+"
+" function! SetJavaScriptCheckers()
+"   let checkers = []
+"
+"   if findfile('.eslintrc', '.;') != ''
+"     call add(checkers, 'eslint')
+"   endif
+"
+"   if findfile('.jshintrc', '.;') != ''
+"     call add(checkers, 'jshint')
+"   endif
+"
+"   if findfile('.jscsrc', '.;') != ''
+"     call add(checkers, 'jscs')
+"   endif
+"
+"   if finddir('ProjectSettings', '.;') != ''
+"     call add(checkers, 'unityscript')
+"   endif
+"
+"   let g:neomake_javascript_enabled_makers = checkers
+" endfunction
+"
+" autocmd FileType javascript call SetJavaScriptCheckers()
 
 " -----------
 " vim-airline

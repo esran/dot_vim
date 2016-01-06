@@ -6,7 +6,6 @@ call plug#begin('~/.vim/bundle')
 
 " Plugin Helpers!
   Plug 'tpope/vim-dispatch'
-  Plug 'Shougo/vimproc.vim'
 
 " Search
   Plug 'rking/ag.vim'
@@ -24,9 +23,9 @@ call plug#begin('~/.vim/bundle')
   Plug 'tomtom/tcomment_vim'
 
 " Tools
-  Plug 'kien/ctrlp.vim'
+  Plug 'ctrlpvim/ctrlp.vim'
   Plug 'sjl/gundo.vim'
-  Plug 'scrooloose/nerdtree'
+  Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'ervandew/supertab'
   Plug 'scrooloose/syntastic'
@@ -36,7 +35,7 @@ call plug#begin('~/.vim/bundle')
   Plug 'Valloric/YouCompleteMe'
 
 " Unite
-  Plug 'Shougo/unite.vim'
+  Plug 'Shougo/vimproc.vim' | Plug 'Shougo/unite.vim'
   Plug 'Shougo/unite-outline'
 
 " Visuals

@@ -1,13 +1,4 @@
 
-" ------
-" Ctrl-P
-" ------
-" Leader Commands
-nnoremap <leader>t :CtrlPRoot<CR>
-nnoremap <leader>b :CtrlPBuffer<CR>
-nnoremap <leader>u :CtrlPCurFile<CR>
-nnoremap <leader>m :CtrlPMRUFiles<CR>
-
 " ---------
 " incsearch
 " ---------
@@ -24,7 +15,7 @@ map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
 " ---------
-" netrdtree
+" nerdtree
 " ---------
 nnoremap <silent><leader>nn :NERDTreeToggle<CR>:wincmd =<CR>
 nnoremap <silent><leader>nf :NERDTreeFind<CR>:wincmd =<CR>
@@ -43,16 +34,45 @@ vnoremap <silent><leader>cc :TComment<CR>
 nnoremap <silent><leader>cb :TCommentBlock<CR>
 vnoremap <silent><leader>cb :TCommentBlock<CR>
 
+" ------
+" Ctrl-P
+" ------
+" Leader Commands
+nnoremap <leader>t :CtrlPRoot<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
+" nnoremap <leader>u :CtrlPCurFile<CR>
+" nnoremap <leader>m :CtrlPMRUFiles<CR>
+
 " -----
 " Unite
 " -----
-nnoremap <leader>u :<C-u>Unite -buffer-name=Parent file_rec/async:!<cr>
-nnoremap <leader>n :<C-u>Unite -buffer-name=Files file<cr>
-nnoremap <leader>y :<C-u>Unite -buffer-name=Yanks history/yank<cr>
-nnoremap <leader>b :<C-u>Unite -buffer-name=Buffers buffer<cr>
-nnoremap <leader>g :<C-u>Unite grep:.<cr>
-nnoremap <leader>a :<C-u>Unite -buffer-name=Word grep:.::<c-r><c-w><cr>
-nnoremap <leader>t :<C-u>Unite -buffer-name=Tags -vertical -winwidth=50 outline<cr>
+" nnoremap <leader>u :<C-u>Unite -buffer-name=Parent -vertical file_rec/async:!<cr>
+" nnoremap <leader>n :<C-u>Unite -buffer-name=Files -vertical file<cr>
+" nnoremap <leader>y :<C-u>Unite -buffer-name=Yanks -vertical history/yank<cr>
+" nnoremap <leader>b :<C-u>Unite -buffer-name=Buffers -vertical buffer<cr>
+" nnoremap <leader>g :<C-u>Unite grep:.<cr>
+" nnoremap <leader>a :<C-u>Unite -buffer-name=Word grep:.::<c-r><c-w><cr>
+nnoremap <leader>f :<C-u>Unite -buffer-name=Tags -vertical -winwidth=50 outline<cr>
+
+" Detect if in a source controlled directory.  If not, then fall back to the
+" file_rec/async
+" if !empty(glob(".git"))
+"     map <leader>f :Unite -start-insert -no-split -buffer-name=files file_rec/git<cr>
+" else
+"     map <leader>f :Unite -start-insert -no-split -buffer-name=files file_rec/async<cr>
+" endif
+" map <leader>b :Unite -auto-preview -start-insert -buffer-name=buffers -no-split buffer<cr>
+" map <leader>s :Unite -auto-preview -no-split -buffer-name=search grep:.<cr>
+map <leader>o :Unite -start-insert -vertical -buffer-name=outline outline<cr>
+" map <leader>l :Unite -start-insert -buffer-name=lines line<cr>
+" map <leader>r :Unite -start-insert -buffer-name=registers register<cr>
+" map <leader>y :Unite -no-split -buffer-name=yank history/yank<cr>
+" map <leader>vf :VimFiler<cr>
+" map <leader>gc :Unite git-conflict<cr>
+" map <leader>hc :Unite -no-split -buffer-name=command history/command<cr>
+" map <leader>hs :Unite -no-split -buffer-name=search history/search<cr>
+" map <leader>n :UniteNext<cr>
+" map <leader>p :UnitePrevious<cr>
 
 " -------
 " Airline
