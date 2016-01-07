@@ -33,6 +33,7 @@ call plug#begin('~/.vim/bundle')
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-surround'
   Plug 'Valloric/YouCompleteMe'
+  Plug 'AndrewRadev/splitjoin.vim'
 
 " Unite
   Plug 'Shougo/vimproc.vim' | Plug 'Shougo/unite.vim'

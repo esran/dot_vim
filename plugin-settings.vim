@@ -305,12 +305,17 @@ let g:VimuxUseNearestPane = 1
 let g:ycm_complete_in_comments = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_use_ultisnips_completer = 0
+let g:ycm_use_ultisnips_completer = 1
 let g:ycm_filetype_specific_completion_to_disable = {
 			\ 'ruby' : 1,
 			\ 'javascript' : 1,
 			\ 'jsx' : 1,
 			\}
+
+let g:ycm_semantic_triggers = {
+			\   'cs,java,javascript,typescript,d,python,perl6,scala,vb,elixir,go' : ['.'],
+			\   'ruby' : ['.', '::'],
+			\ }
 
 " Don't want preview window
 let g:ycm_add_preview_to_completeopt = 0
@@ -407,3 +412,14 @@ let airline#extensions#tmuxline#snapshot_file = "~/.tmux-statusline-colors.conf"
 
 " specify mixed indent mode so as not to get hassled about C block comments
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
+
+" -------------
+" splitjoin.vim
+" -------------
+let g:splitjoin_split_mapping = ''
+let g:splitjoin_join_mapping = ''
+let g:splitjoin_trailing_comma = 1
+let g:splitjoin_align = 1
+
+nnoremap <leader>sj :SplitjoinSplit<cr>
+nnoremap <leader>sk :SplitjoinJoin<cr>
