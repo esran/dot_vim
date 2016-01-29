@@ -75,7 +75,7 @@ set ttimeoutlen=10     " Time to wait for key codes
 " set nofoldenable       " Don't disable folding entirely.
 " set foldlevelstart=99  " I quite like folds.
 set formatoptions=crql
-set iskeyword+=\$      " Add extra characters that are valid parts of variables
+" set iskeyword+=\$      " Add extra characters that are valid parts of variables
 set nostartofline      " Don't go to the start of the line after some commands
 set scrolloff=3        " Keep three lines below the last line when scrolling
 " set gdefault           " this makes search/replace global by default
