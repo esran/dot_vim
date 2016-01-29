@@ -144,6 +144,9 @@ let g:syntastic_perl_checkers = [ 'perl', 'perlcritic', 'podchecker' ]
 let g:syntastic_enable_perl_checker = 1
 let g:syntastic_c_remove_include_errors = 0
 
+" Add a default location for our testing library stuff
+let g:syntastic_perl_lib_path = [ '$HOME/work/PostgreSQL/src/test/JustOne/lib' ]
+
 function! SetJavaScriptCheckers()
   if findfile('.eslintrc', '.;') != ''
     " Use eslint for projects w/ eslintrc
