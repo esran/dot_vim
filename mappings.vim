@@ -176,6 +176,9 @@ nnoremap <F5> :lcd %:p:h<CR>:pwd<CR>
 " Jump to next error
 nnoremap <F9> :cnext<CR>
 
+" Merging, accept remote
+nnoremap <F8> :diffget RE<CR>n
+
 "--------------------
 " Function: Open tag under cursor in new tab
 " Source:   http://stackoverflow.com/questions/563616/vimctags-tips-and-tricks
