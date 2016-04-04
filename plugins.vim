@@ -40,7 +40,8 @@ call plug#begin('~/.vim/bundle')
   Plug 'Shougo/unite-outline'
 
 " Visuals
-  Plug 'bling/vim-airline'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
   Plug 'edkolev/tmuxline.vim'
   Plug 'altercation/vim-colors-solarized'
   Plug 'nathanaelkane/vim-indent-guides'
