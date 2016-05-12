@@ -38,7 +38,9 @@ endif
 " UI
 " ---------------
 set number			" Line numbers
-set relativenumber 	" Relative line numbers
+if exists('+relativenumber')
+	set relativenumber 	" Relative line numbers
+endif
 set noruler          " Ruler off
 set nowrap         " Line wrapping off
 set laststatus=2   " Always show the statusline

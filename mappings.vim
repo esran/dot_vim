@@ -67,10 +67,12 @@ nnoremap <silent> g3 :wincmd t<bar>:wincmd l<bar>
       \:wincmd l<CR>
 nnoremap <silent> g4 :wincmd b<CR>
 
-" Equal Size Windows
-nnoremap <silent> g= :wincmd =<CR>
-" Swap Windows
-nnoremap <silent> gx :wincmd x<CR>
+if version > 702
+	" Equal Size Windows
+	nnoremap <silent> g= :wincmd =<CR>
+	" Swap Windows
+	nnoremap <silent> gx :wincmd x<CR>
+endif
 
 " ---------------
 " Modifer Mappings
