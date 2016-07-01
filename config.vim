@@ -25,8 +25,11 @@ autocmd ColorScheme * hi Search term=none
 " -----------------------------
 " File Locations
 " -----------------------------
-set backupdir=~/local/vim/backup// " Double // causes backups to use full file path
-set directory=~/local/vim/tmp//
+" set backupdir=~/local/vim/backup// " Double // causes backups to use full file path
+" set directory=~/local/vim/tmp//
+set nobackup
+set noswapfile
+set nowritebackup
 set spellfile=~/.vim/spell/custom.en.utf-8.add
 " Persistent Undo
 if has('persistent_undo')
@@ -64,7 +67,6 @@ endif
 " Behaviors
 " ---------------
 syntax enable
-set backup             " Turn on backups
 set autoread           " Automatically reload changes if detected
 set wildmenu           " Turn on WiLd menu
 set wildmode=longest:full,full " alternatively just full
