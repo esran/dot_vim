@@ -1,5 +1,5 @@
 if exists('g:vundle_installing_plugins')
-  Plug 'bling/vim-airline'
+  Plugin 'vim-airline/vim-airline'
   finish
 endif
 
