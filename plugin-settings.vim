@@ -36,13 +36,13 @@ let g:ctrlp_max_files = 0
 let g:ctrlp_show_hidden = 1
 
 if executable('ag')
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  " HatTip: http://robots.thoughtbot.com/faster-grepping-in-vim and
-  " @ethanmuller
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+	" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+	" HatTip: http://robots.thoughtbot.com/faster-grepping-in-vim and
+	" @ethanmuller
+	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
+	" ag is fast enough that CtrlP doesn't need to cache
+	let g:ctrlp_use_caching = 0
 endif
 
 " -----------
@@ -73,13 +73,13 @@ let g:incsearch#magic = '\v'
 " MatchTagAlways
 " --------------
 let g:mta_filetypes = {
-    \ 'html' : 1,
-    \ 'xhtml' : 1,
-    \ 'xml' : 1,
-    \ 'handlebars' : 1,
-    \ 'eruby' : 1,
-	\ 'sgml' : 1,
-    \}
+			\ 'html' : 1,
+			\ 'xhtml' : 1,
+			\ 'xml' : 1,
+			\ 'handlebars' : 1,
+			\ 'eruby' : 1,
+			\ 'sgml' : 1,
+			\}
 
 " --------
 " nerdtree
@@ -90,7 +90,7 @@ let g:NERDTreeMinimalUI = 1
 " let g:NERDTreeForceMac = 1
 " Close Vim if NERDTree is the last buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
-  \&& b:NERDTreeType == "primary") | q | endif
+			\&& b:NERDTreeType == "primary") | q | endif
 
 " Filter some files out
 let g:NERDTreeIgnore = [ '\~$', '.o$[[file]]' ]
@@ -148,16 +148,16 @@ let g:syntastic_c_remove_include_errors = 0
 let g:syntastic_perl_lib_path = [ '$HOME/work/PostgreSQL/src/test/JustOne/lib' ]
 
 function! SetJavaScriptCheckers()
-  if findfile('.eslintrc', '.;') != ''
-    " Use eslint for projects w/ eslintrc
-    let b:syntastic_checkers = ['eslint']
-  elseif finddir('ProjectSettings', '.;') != ''
-    " Use nothing for Unity projects.
-    let b:syntastic_checkers = ['unityscript']
-  else
-    " Default to jshint
-    let b:syntastic_checkers = ['jshint']
-  endif
+	if findfile('.eslintrc', '.;') != ''
+		" Use eslint for projects w/ eslintrc
+		let b:syntastic_checkers = ['eslint']
+	elseif finddir('ProjectSettings', '.;') != ''
+		" Use nothing for Unity projects.
+		let b:syntastic_checkers = ['unityscript']
+	else
+		" Default to jshint
+		let b:syntastic_checkers = ['jshint']
+	endif
 endfunction
 
 autocmd FileType javascript call SetJavaScriptCheckers()
@@ -204,7 +204,7 @@ endif
 let g:EasyMotion_do_mapping = 0
 " Use uppercase target labels and type as a lower case
 let g:EasyMotion_use_upper = 1
- " type `l` and match `l`&`L`
+" type `l` and match `l`&`L`
 let g:EasyMotion_smartcase = 1
 " Smartsign (type `3` and match `3`&`#`)
 let g:EasyMotion_use_smartsign_us = 1
@@ -255,16 +255,16 @@ let g:signify_sign_overwrite = 0
 " vim-startify
 " ------------
 let g:startify_list_order = [
-        \ ['   Last modified'],
-        \ 'dir',
-        \ ['   Recent'],
-        \ 'files',
-        \ ]
+			\ ['   Last modified'],
+			\ 'dir',
+			\ ['   Recent'],
+			\ 'files',
+			\ ]
 let g:startify_skiplist = [
-            \ 'COMMIT_EDITMSG',
-            \ $VIMRUNTIME .'/doc',
-            \ 'bundle/.*/doc',
-            \ ]
+			\ 'COMMIT_EDITMSG',
+			\ $VIMRUNTIME .'/doc',
+			\ 'bundle/.*/doc',
+			\ ]
 let g:startify_files_number = 10
 let g:startify_custom_indices = ['a', 'd', 'f', 'g', 'h']
 let g:startify_change_to_dir = 0
@@ -277,10 +277,10 @@ hi StartifySlash   ctermfg=240
 
 " Show Startify
 autocmd VimEnter *
-            \ if !argc() |
-            \   Startify |
-            \   execute "normal \<c-w>w" |
-            \ endif
+			\ if !argc() |
+			\   Startify |
+			\   execute "normal \<c-w>w" |
+			\ endif
 " Keep NERDTree from opening a split when startify is open
 autocmd FileType startify setlocal buftype=
 
@@ -368,26 +368,26 @@ let g:airline_detect_modified = 1
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#hunks#enabled = 0
 let g:airline_mode_map = {
-      \ 'n'  : 'N',
-      \ 'i'  : 'I',
-      \ 'R'  : 'R',
-      \ 'v'  : 'V',
-      \ 'V'  : 'VL',
-      \ 'c'  : 'CMD',
-      \ '' : 'VB',
-      \ }
+			\ 'n'  : 'N',
+			\ 'i'  : 'I',
+			\ 'R'  : 'R',
+			\ 'v'  : 'V',
+			\ 'V'  : 'VL',
+			\ 'c'  : 'CMD',
+			\ '' : 'VB',
+			\ }
 " Show the current working directory folder name
 let g:airline_section_b = '%{substitute(getcwd(), ".*\/", "", "g")} '
 " Just show the file name
 let g:airline_section_c = '%t'
 let g:airline_section_y = ''
 let g:airline_section_z = '%3p%% %#__accent_bold#%4l%#__restore__#:%3'
-let g:airline_section_z = '%3p%% %{substitute(line("."), "\\v(\\d)((\\d\\d\\d)+\\d@!)@=", "\\1,", "g")}|%{substitute(line("$"), "\\v(\\d)((\\d\\d\\d)+\\d@!)@=", "\\1,", "g")}'
+let g:airline_section_z = '%3p%% %{substitute(line("."), "\\v(\\d)((\\d\\d\\d)+\\d@!)@=", "\\1,", "g")}|%{substitute(line("$"), "\\v(\\d)((\\d\\d\\d)+\\d@!)@=", "\\1,", "g")} %{col()}'
 
 let g:airline#extensions#default#layout = [
-  \ [ 'a', 'b', 'warning', 'c' ],
-  \ [ 'x', 'y', 'z' ]
-  \ ]
+			\ [ 'a', 'b', 'warning', 'c' ],
+			\ [ 'x', 'y', 'z' ]
+			\ ]
 
 " let g:airline_section_c = '%t'
 " " Just show the file name
