@@ -18,7 +18,22 @@ if version >= 704
 	let g:ycm_semantic_triggers =  {
 	  \   'cs,java,javascript,typescript,d,python,perl6,scala,vb,elixir,go' : ['.'],
 	  \   'ruby' : ['.', '::'],
-	  \ }
+  \   'gitcommit' : ['#', ':'],
+  \ }
+
+
+" Overwritten so we can allow markdown completion.
+let g:ycm_filetype_blacklist = {
+  \ 'notes': 1,
+  \ 'unite': 1,
+  \ 'tagbar': 1,
+  \ 'pandoc': 1,
+  \ 'qf': 1,
+  \ 'vimwiki': 1,
+  \ 'text': 1,
+  \ 'infolog': 1,
+  \ 'mail': 1
+\}
 
 		" Don't want preview window
 	let g:ycm_add_preview_to_completeopt = 0
