@@ -1,5 +1,5 @@
 " YCM needs at least 704
-if version >= 704
+if version >= 703
 	if exists('g:vundle_installing_plugins')
 	  Plug 'Valloric/YouCompleteMe'
 	  finish

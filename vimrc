@@ -1,6 +1,17 @@
+" =============================================================================
+" Who: Jeremy Mack (@mutewinter)
+" Description: The Vim Configuration of Champions
+" Version: 3.0 - Now each plugin is included and managed in its own file!
+" =============================================================================
+" Modified: Sean Johnston (@esran)
+" Updates: Replaced Vundle with Vim-Plug
+" =============================================================================
 
-" Load plugins (vim-plug)
-source ~/.vim/plugins.vim
+" All of the plugins are installed with Vundle from this file.
+source ~/.vim/vundle.vim
+
+" Automatically detect file types. (must turn on after Vundle)
+" filetype plugin indent on
 
 " Platform (Windows, Mac, etc.) configuration.
 source ~/.vim/platforms.vim
@@ -14,9 +25,8 @@ source ~/.vim/commands.vim
 " All hotkeys, not dependant on plugins, are mapped here.
 source ~/.vim/mappings.vim
 
-" Load plugin settings nad key mappings
-source ~/.vim/plugin-settings.vim
-source ~/.vim/plugin-mappings.vim
+" Load plugin-specific configuration
+source ~/.vim/plugins.vim
 
 " Small custom functions.
 source ~/.vim/functions.vim

@@ -1,4 +1,4 @@
 if exists('g:vundle_installing_plugins')
-  Plug 'jeffkreeftmeijer/vim-numbertoggle'
+  Plug 'fatih/vim-go'
   finish
 endif
