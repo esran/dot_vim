@@ -7,6 +7,13 @@
 let mapleader=','
 let maplocalleader = ' '
 
+" -----------------------
+" Unmapped While Learning
+" -----------------------
+
+" " No-op ^ and $ while learning H and L
+" noremap ^ <nop>
+" noremap $ <nop>
 nnoremap <leader>sc <nop>
 
 " ---------------
@@ -52,9 +59,12 @@ nnoremap <silent> * :let stay_star_view = winsaveview()<cr>*:call winrestview(st
 " Window Movement
 " ---------------
 nnoremap <silent> gh :wincmd h<CR>
+" nnoremap <silent> <M-h> :wincmd h<CR>
 nnoremap <silent> gj :wincmd j<CR>
 nnoremap <silent> gk :wincmd k<CR>
+" nnoremap <silent> <M-k> :wincmd k<CR>
 nnoremap <silent> gl :wincmd l<CR>
+" nnoremap <silent> <M-l> :wincmd l<CR>
 
 "   4 Window Splits
 "

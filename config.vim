@@ -2,19 +2,18 @@
 " Regular Vim Configuration (No Plugins Needed)
 " ---------------------------------------------
 
-" ---------------
-" Color
-" ---------------
-" Don't tweak color settings unless we have the gui
-" otherwise stuff becomes unreadable.
+" ------------------------
+" GUI specific stuff
+" ------------------------
 if has('gui_running')
 	set lines=60 columns=150
 	set guioptions=egmrt
 	winpos 200 100
-	" set background=dark
-	" colorscheme jellybeans
 endif
 
+" ---------------
+" Color
+" ---------------
 set t_Co=256
 colorscheme solarized
 " Search highlighting. Overriding solarized
@@ -25,6 +24,7 @@ autocmd ColorScheme * hi Search term=none
 " -----------------------------
 " File Locations
 " -----------------------------
+" Disable backups and swap files. They're more hassle than they're worth.
 " set backupdir=~/local/vim/backup// " Double // causes backups to use full file path
 " set directory=~/local/vim/tmp//
 set nobackup
@@ -40,11 +40,7 @@ endif
 " ---------------
 " UI
 " ---------------
-set number			" Line numbers
-if exists('+relativenumber')
-	set relativenumber 	" Relative line numbers
-endif
-set noruler          " Ruler off
+set noruler        " Ruler off
 set nowrap         " Line wrapping off
 set laststatus=2   " Always show the statusline
 set cmdheight=2    " Make the command area two lines high
@@ -53,28 +49,37 @@ set encoding=utf-8
 set noshowmode     " Don't show the mode since Powerline shows it
 set title          " Set the title of the window in the terminal to the file
 if exists('+colorcolumn')
-	set colorcolumn=132 " Color the 80th column differently as a wrapping guide.
+	set colorcolumn=80 " Color the 80th column differently as a wrapping guide.
 endif
 " Disable tooltips for hovering keywords in Vim
-"if exists('+ballooneval')
-	" This doesn't seem to stop tooltips for Ruby files
-	"set noballooneval
-	" 100 second delay seems to be the only way to disable the tooltips
-	"set balloondelay=100000
-"endif
+" if exists('+ballooneval')
+" 	" This doesn't seem to stop tooltips for Ruby files
+" 	set noballooneval
+" 	" 100 second delay seems to be the only way to disable the tooltips
+" 	set balloondelay=100000
+" endif
+set number			" Line numbers
+" Relative line numbers if possible
+if exists('+relativenumber')
+	set relativenumber
+endif
 
 " ---------------
 " Behaviors
 " ---------------
 syntax enable
+" set backup             " Turn on backups
 set autoread           " Automatically reload changes if detected
 set wildmenu           " Turn on WiLd menu
-set wildmode=longest:full,full " alternatively just full
+" longest common part, then all.
+set wildmode=longest:full,full
 set hidden             " Change buffer - without saving
 set history=768        " Number of things to remember in history.
 set confirm            " Enable error files & error jumping.
+" set clipboard+=unnamed " Yanks go on clipboard instead.
 set autowrite          " Writes on make/shell commands
 set timeoutlen=400     " Time to wait for a command (after leader for example).
+" set ttimeout
 set ttimeoutlen=10     " Time to wait for key codes
 " set nofoldenable       " Don't disable folding entirely.
 " set foldlevelstart=99  " I quite like folds.
@@ -155,7 +160,6 @@ set mouse=a    " Mouse in all modes
 " Better complete options to speed it up
 set complete=.,w,b,u,U
 set completeopt-=preview
-
 
 " ------------
 " Cursor stuff
