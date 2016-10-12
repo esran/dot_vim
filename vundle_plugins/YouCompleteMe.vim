@@ -16,27 +16,28 @@ if version >= 703
 		\}
 
 	let g:ycm_semantic_triggers =  {
-	  \   'cs,java,javascript,typescript,d,python,perl6,scala,vb,elixir,go' : ['.'],
-	  \   'ruby' : ['.', '::'],
-  \   'gitcommit' : ['#', ':'],
-  \ }
+				\   'cs,java,javascript,typescript,d,python,perl6,scala,vb,elixir,go' : ['.'],
+				\   'ruby' : ['.', '::'],
+				\   'gitcommit' : ['#', ':'],
+				\ }
 
 
-" Overwritten so we can allow markdown completion.
-let g:ycm_filetype_blacklist = {
-  \ 'notes': 1,
-  \ 'unite': 1,
-  \ 'tagbar': 1,
-  \ 'pandoc': 1,
-  \ 'qf': 1,
-  \ 'vimwiki': 1,
-  \ 'text': 1,
-  \ 'infolog': 1,
-  \ 'mail': 1
-\}
+	" Overwritten so we can allow markdown completion.
+	let g:ycm_filetype_blacklist = {
+				\ 'notes': 1,
+				\ 'unite': 1,
+				\ 'tagbar': 1,
+				\ 'pandoc': 1,
+				\ 'qf': 1,
+				\ 'vimwiki': 1,
+				\ 'text': 1,
+				\ 'infolog': 1,
+				\ 'mail': 1
+				\}
 
-		" Don't want preview window
+	" Don't want preview window
 	let g:ycm_add_preview_to_completeopt = 0
 	let g:ycm_show_diagnostics_ui = 1
 	let g:ycm_extra_conf_globlist = [ '~/work/*', '/home/local/sean/Work/*' ]
+	let g:ycm_always_populate_location_list = 1
 endif
