@@ -38,6 +38,6 @@ if version >= 703
 	" Don't want preview window
 	let g:ycm_add_preview_to_completeopt = 0
 	let g:ycm_show_diagnostics_ui = 1
-	let g:ycm_extra_conf_globlist = [ '~/work/*', '/home/local/sean/Work/*' ]
+	let g:ycm_extra_conf_globlist = [ '~/work/*', '/home/local/sean/Work/*', '/home/local/sean/work/*' ]
 	let g:ycm_always_populate_location_list = 1
 endif

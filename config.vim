@@ -6,7 +6,7 @@
 " GUI specific stuff
 " ------------------------
 if has('gui_running')
-	set lines=60 columns=150
+	set lines=60 columns=180
 	set guioptions=egmrt
 	winpos 200 100
 endif
@@ -16,6 +16,7 @@ endif
 " ---------------
 set t_Co=256
 colorscheme solarized
+" set bg=dark
 " Search highlighting. Overriding solarized
 autocmd ColorScheme * hi Search gui=underline guifg=#f0a0c0
 autocmd ColorScheme * hi Search cterm=underline ctermfg=5
@@ -182,3 +183,8 @@ hi InsertCursor  ctermfg=15 guifg=#fdf6e3 ctermbg=37  guibg=#2aa198
 hi VisualCursor  ctermfg=15 guifg=#fdf6e3 ctermbg=125 guibg=#d33682
 hi ReplaceCursor ctermfg=15 guifg=#fdf6e3 ctermbg=65  guibg=#dc322f
 hi CommandCursor ctermfg=15 guifg=#fdf6e3 ctermbg=166 guibg=#cb4b16
+
+" ---------
+" Man pages
+" ---------
+runtime! ftplugin/man.vim
