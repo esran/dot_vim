@@ -196,3 +196,10 @@ if has('nvim')
 else
 	runtime! ftplugin/man.vim
 endif
+
+" ---------------------------
+" File type formatting issues
+" ---------------------------
+autocmd Filetype haml setlocal expandtab ts=2 sw=2 ai
+autocmd Filetype rb setlocal noexpandtab ts=4 sw=4 ai
+autocmd Filetype sql setlocal expandtab ts=2 sw=2 ai
