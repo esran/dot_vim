@@ -15,12 +15,12 @@ endif
 " Color
 " ---------------
 set t_Co=256
-colorscheme solarized
-" set bg=dark
+colorscheme monokai-phoenix
+
 " Search highlighting. Overriding solarized
-autocmd ColorScheme * hi Search gui=underline guifg=#f0a0c0
-autocmd ColorScheme * hi Search cterm=underline ctermfg=5
-autocmd ColorScheme * hi Search term=none
+" autocmd ColorScheme * hi Search gui=underline guifg=#f0a0c0
+" autocmd ColorScheme * hi Search cterm=underline ctermfg=5
+" autocmd ColorScheme * hi Search term=none
 
 " -----------------------------
 " File Locations
