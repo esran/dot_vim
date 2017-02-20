@@ -25,12 +25,17 @@ autocmd ColorScheme * hi Search term=none
 " -----------------------------
 " File Locations
 " -----------------------------
-" Disable backups and swap files. They're more hassle than they're worth.
-" set backupdir=~/local/vim/backup// " Double // causes backups to use full file path
-" set directory=~/local/vim/tmp//
-set nobackup
-set noswapfile
-set nowritebackup
+" Create directories if they don't already exist
+if !isdirectory($HOME."/tmp/vim/backup")
+	call mkdir($HOME."/tmp/vim/backup", "p")
+endif
+if !isdirectory($HOME."/tmp/vim/tmp")
+	call mkdir($HOME."/tmp/vim/tmp", "p")
+endif
+
+set backupdir=~/tmp/vim/backup// " Double // causes backups to use full file path
+set directory=~/tmp/vim/tmp//
+
 set spellfile=~/.vim/spell/custom.en.utf-8.add
 " Persistent Undo
 if has('persistent_undo')
