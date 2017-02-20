@@ -192,4 +192,7 @@ hi CommandCursor ctermfg=15 guifg=#fdf6e3 ctermbg=166 guibg=#cb4b16
 " ---------
 " Man pages
 " ---------
-runtime! ftplugin/man.vim
+if has('nvim')
+else
+	runtime! ftplugin/man.vim
+endif

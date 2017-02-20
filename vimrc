@@ -1,40 +1,54 @@
-" =============================================================================
-" Who: Jeremy Mack (@mutewinter)
-" Description: The Vim Configuration of Champions
-" Version: 3.0 - Now each plugin is included and managed in its own file!
-" =============================================================================
-" Modified: Sean Johnston (@esran)
-" Updates: Replaced Vundle with Vim-Plug
-" =============================================================================
-
 " ============================
 " Load plugins, using vim-plug
-call plug#begin('~/.vim/bundle')
+call plug#begin()
 
 " Look and Feel
-Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" Color schemes
+if has('nvim')
+	Plug 'Samuel-Phillips/nvim-colors-solarized'
+else
+	Plug 'altercation/vim-colors-solarized'
+endif
+Plug 'rhysd/vim-color-spring-night'
+Plug 'Reewr/vim-monokai-phoenix'
+
 " Completion
-" Plug 'Shougo/deoplete.nvim'  " , { 'do': ':UpdateRemotePlugins' }
-" Plug 'tweekmonster/deoplete-clang2'
-Plug 'Valloric/YouCompleteMe'
+if has('nvim')
+	Plug 'Shougo/deoplete.nvim'  " , { 'do': ':UpdateRemotePlugins' }
+	Plug 'tweekmonster/deoplete-clang2'
+	Plug 'c9s/perlomni.vim'
+else
+	if version >= 704
+		Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+	endif
+endif
 
 " Finding Stuff
-Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf', { 'dir': '~/stuff/fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Editing Tools
+Plug 'mutewinter/vim-autoreadwatch'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'majutsushi/tagbar'
 Plug 'cohama/lexima.vim'
 Plug 'tomtom/tcomment_vim'
+Plug 'battlesnake/pgsql.vim'
+if !has('nvim') && version > 703
+	Plug 'haya14busa/incsearch.vim'
+endif
 
 " Coding Tools
 Plug 'scrooloose/syntastic'
-Plug 'ludovicchabant/vim-gutentags'
+if has('nvim') || version >= 704
+	Plug 'ludovicchabant/vim-gutentags'
+endif
 Plug 'autoload_cscope.vim'
 Plug 'chazy/cscope_maps'
 Plug 'tpope/vim-endwise'
@@ -46,31 +60,12 @@ Plug 'mhinz/vim-signify'
 call plug#end()
 " ============================
 
-" " All of the plugins are installed with Vundle from this file.
-" source ~/.vim/vundle.vim
-
-" Automatically detect file types. (must turn on after Vundle)
-" filetype plugin indent on
-
-" Platform (Windows, Mac, etc.) configuration.
+" Source files form vim configuration
 source ~/.vim/platforms.vim
-
-" All of the Vim configuration.
 source ~/.vim/config.vim
-
-" New commands
 source ~/.vim/commands.vim
-
-" All hotkeys, not dependant on plugins, are mapped here.
 source ~/.vim/mappings.vim
-
-" " Load plugin-specific configuration
-" source ~/.vim/plugins.vim
-
-" Small custom functions.
 source ~/.vim/functions.vim
-
-" Auto commands.
 source ~/.vim/autocmds.vim
 
 " Load a host specific file, if present
@@ -84,59 +79,18 @@ endif
 let g:deoplete#enable_at_startup = 1
 " Automatic tab completion
 inoremap <silent><expr> <Tab>
-            \ pumvisible() ? "\<C-n>" : "<Tab>"
+			\ pumvisible() ? "\<C-n>" : "<Tab>"
 
 " ============================
 " FZF configuration
-" Standard file find...
-nnoremap <leader>t :FZF<CR>
-
-" Buffer find...
-function! s:buflist()
-  redir => ls
-  silent ls
-  redir END
-  return split(ls, '\n')
+" Git project root find
+function! s:find_git_root()
+	return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
 endfunction
+command! ProjectFiles execute 'Files' s:find_git_root()
 
-function! s:bufopen(e)
-  execute 'buffer' matchstr(a:e, '^[ 0-9]*')
-endfunction
-
-nnoremap <silent> <Leader>b :call fzf#run({
-\   'source':  reverse(<sid>buflist()),
-\   'sink':    function('<sid>bufopen'),
-\   'options': '+m',
-\   'down':    len(<sid>buflist()) + 2
-\ })<CR>
-
-" Tags find...
-function! s:tags_sink(line)
-  let parts = split(a:line, '\t\zs')
-  let excmd = matchstr(parts[2:], '^.*\ze;"\t')
-  execute 'silent e' parts[1][:-2]
-  let [magic, &magic] = [&magic, 0]
-  execute excmd
-  let &magic = magic
-endfunction
-
-function! s:tags()
-  if empty(tagfiles())
-    echohl WarningMsg
-    echom 'Preparing tags'
-    echohl None
-    call system('ctags -R')
-  endif
-
-  call fzf#run({
-  \ 'source':  'cat '.join(map(tagfiles(), 'fnamemodify(v:val, ":S")')).
-  \            '| grep -v -a ^!',
-  \ 'options': '+m -d "\t" --with-nth 1,4.. -n 1 --tiebreak=index',
-  \ 'down':    '40%',
-  \ 'sink':    function('s:tags_sink')})
-endfunction
-
-command! Tags call s:tags()
+nnoremap <leader>t :ProjectFiles<CR>
+nnoremap <leader>b :Buffers<CR>
 
 " ============================
 " NERDTree configuration
@@ -149,7 +103,7 @@ let g:NERDTreeMinimalUI = 1
 " let g:NERDTreeForceMac = 1
 " Close Vim if NERDTree is the last buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
-  \&& b:NERDTreeType == "primary") | q | endif
+			\&& b:NERDTreeType == "primary") | q | endif
 
 " Filter some files out
 let g:NERDTreeIgnore = [ '\~$', '.o$[[file]]' ]
@@ -157,8 +111,8 @@ let g:NERDTreeIgnore = [ '\~$', '.o$[[file]]' ]
 " https://github.com/ryanoasis/vim-webdevicons
 " NERDTress File highlighting
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermfg='. a:fg .' guifg='. a:guifg
-exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+	exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermfg='. a:fg .' guifg='. a:guifg
+	exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
 
 call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
@@ -189,14 +143,14 @@ let g:airline_detect_modified = 1
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#hunks#enabled = 0
 let g:airline_mode_map = {
-      \ 'n'  : 'N',
-      \ 'i'  : 'I',
-      \ 'R'  : 'R',
-      \ 'v'  : 'V',
-      \ 'V'  : 'VL',
-      \ 'c'  : 'CMD',
-      \ '' : 'VB',
-      \ }
+			\ 'n'  : 'N',
+			\ 'i'  : 'I',
+			\ 'R'  : 'R',
+			\ 'v'  : 'V',
+			\ 'V'  : 'VL',
+			\ 'c'  : 'CMD',
+			\ '' : 'VB',
+			\ }
 " Show the current working directory folder name
 let g:airline_section_b = '%{substitute(getcwd(), ".*\/", "", "g")} '
 " Just show the file name
@@ -206,9 +160,9 @@ let g:airline_section_z = '%3p%% %#__accent_bold#%4l%#__restore__#:%3'
 let g:airline_section_z = '%3p%% %{substitute(line("."), "\\v(\\d)((\\d\\d\\d)+\\d@!)@=", "\\1,", "g")}|%{substitute(line("$"), "\\v(\\d)((\\d\\d\\d)+\\d@!)@=", "\\1,", "g")}'
 
 let g:airline#extensions#default#layout = [
-  \ [ 'a', 'b', 'warning', 'c' ],
-  \ [ 'x', 'y', 'z' ]
-  \ ]
+			\ [ 'a', 'b', 'warning', 'c' ],
+			\ [ 'x', 'y', 'z' ]
+			\ ]
 
 " let g:airline_section_c = '%t'
 " " Just show the file name
@@ -255,18 +209,21 @@ let g:syntastic_full_redraws = 1
 let g:syntastic_perl_checkers = [ 'perl', 'perlcritic', 'podchecker' ]
 let g:syntastic_enable_perl_checker = 1
 let g:syntastic_c_remove_include_errors = 0
+" let g:syntastic_c_checkers = [ 'gcc', 'make' ]
+let g:syntastic_c_clang_check_post_args = ""
+" let g:syntastic_enable_c_checker = 0
 
 function! SetJavaScriptCheckers()
-  if findfile('.eslintrc', '.;') != ''
-    " Use eslint for projects w/ eslintrc
-    let b:syntastic_checkers = ['eslint']
-  elseif finddir('ProjectSettings', '.;') != ''
-    " Use nothing for Unity projects.
-    let b:syntastic_checkers = ['unityscript']
-  else
-    " Default to jshint
-    let b:syntastic_checkers = ['jshint']
-  endif
+	if findfile('.eslintrc', '.;') != ''
+		" Use eslint for projects w/ eslintrc
+		let b:syntastic_checkers = ['eslint']
+	elseif finddir('ProjectSettings', '.;') != ''
+		" Use nothing for Unity projects.
+		let b:syntastic_checkers = ['unityscript']
+	else
+		" Default to jshint
+		let b:syntastic_checkers = ['jshint']
+	endif
 endfunction
 
 autocmd FileType javascript call SetJavaScriptCheckers()
@@ -312,7 +269,6 @@ if version >= 703
 				\   'gitcommit' : ['#', ':'],
 				\ }
 
-
 	" Overwritten so we can allow markdown completion.
 	let g:ycm_filetype_blacklist = {
 				\ 'notes': 1,
@@ -331,4 +287,56 @@ if version >= 703
 	let g:ycm_show_diagnostics_ui = 1
 	let g:ycm_extra_conf_globlist = [ '~/work/*', '/home/local/sean/Work/*', '/home/local/sean/work/*' ]
 	let g:ycm_always_populate_location_list = 1
+endif
+
+" ============================
+" plpgsql for all sql files
+let g:sql_type_default = 'pgsql'
+
+" ============================
+" Terminal stuff
+if has('nvim')
+	set shell=zsh
+
+	" mappings for ctrl-hjlk window swapping, including terminal
+	tnoremap <C-h> <C-\><C-n><C-w>h
+	tnoremap <C-j> <C-\><C-n><C-w>j
+	tnoremap <C-k> <C-\><C-n><C-w>k
+	tnoremap <C-l> <C-\><C-n><C-w>l
+	nnoremap <C-h> <C-w>h
+	nnoremap <C-j> <C-w>j
+	nnoremap <C-k> <C-w>k
+	nnoremap <C-l> <C-w>l
+	" map escape in terminal to vim style escape
+	" tnoremap <Esc> <C-\><C-n>
+endif
+
+
+" ------------------
+" incsearch settings
+" ------------------
+if !has('nvim') && version > 703
+	" Use incsearch rather than standard search
+	map /  <Plug>(incsearch-forward)
+	map ?  <Plug>(incsearch-backward)
+	map g/ <Plug>(incsearch-stay)
+
+	" Highlight search but automatically disable
+	" highlight after search commands finished
+	set hlsearch
+	let g:incsearch#auto_nohlsearch = 1
+
+	map n  <Plug>(incsearch-nohl-n)
+	map N  <Plug>(incsearch-nohl-N)
+	map *  <Plug>(incsearch-nohl-*)
+	map #  <Plug>(incsearch-nohl-#)
+	map g* <Plug>(incsearch-nohl-g*)
+	map g# <Plug>(incsearch-nohl-g#)
+
+	" Have n/N behave consistently rather than swap
+	" based on direction of seach
+	let g:incsearch#consistent_n_direction = 1
+
+	" Use very magic search option
+	let g:incsearch#magic = '\v'
 endif
