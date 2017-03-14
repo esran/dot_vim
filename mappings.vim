@@ -173,7 +173,7 @@ nnoremap K k
 vnoremap K k
 
 " Toggle paste mode with F6
-nnoremap <silent> <F6> :set paste!<CR>
+" nnoremap <silent> <F6> :set paste!<CR>
 
 " Paste and select pasted
 nnoremap <expr> gpp '`[' . strpart(getregtype(), 0, 1) . '`]'
@@ -185,11 +185,15 @@ iabbrev ddate <C-R>=strftime("%Y-%m-%d")<CR>
 " match the file being edited
 nnoremap <F5> :lcd %:p:h<CR>:pwd<CR>
 
-" Jump to next error
-nnoremap <F9> :cnext<CR>
+" Ale next/previous error
+nnoremap <F6> :ALEPreviousWrap<CR>
+nnoremap <F7> :ALENextWrap<CR>
 
 " Merging, accept remote
 nnoremap <F8> :diffget RE<CR>n
+
+" Jump to next error
+nnoremap <F9> :cnext<CR>
 
 "--------------------
 " Function: Open tag under cursor in new tab
