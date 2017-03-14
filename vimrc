@@ -12,26 +12,13 @@ if has('nvim')
 else
 	Plug 'altercation/vim-colors-solarized'
 endif
-Plug 'rhysd/vim-color-spring-night'
-Plug 'Reewr/vim-monokai-phoenix'
-Plug 'nanotech/jellybeans.vim'
-Plug 'trevordmiller/nova-vim'
 
 " Completion
 Plug 'ervandew/supertab'
-
-" if has('nvim')
-" 	Plug 'Shougo/deoplete.nvim'  " , { 'do': ':UpdateRemotePlugins' }
-" 	Plug 'tweekmonster/deoplete-clang2'
-" endif
-
 Plug 'cazador481/perlomni.vim'
 if version >= 704
 	Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 endif
-
-" Newish, but doesn't seem to support compilation database
-" Plug 'w0rp/ale'
 
 " Finding Stuff
 Plug 'junegunn/fzf', { 'dir': '~/stuff/fzf', 'do': './install --bin' }
@@ -60,7 +47,7 @@ Plug 'autoload_cscope.vim'
 Plug 'chazy/cscope_maps'
 Plug 'tpope/vim-endwise'
 
-" Source Countril
+" Source Countrol
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 
@@ -84,7 +71,9 @@ source ~/.vim/plugin_config/syntastic.vim
 source ~/.vim/plugin_config/gutentags.vim
 source ~/.vim/plugin_config/tcomment.vim
 source ~/.vim/plugin_config/signify.vim
-source ~/.vim/plugin_config/ycm.vim
+if version >= 704
+	source ~/.vim/plugin_config/ycm.vim
+endif
 source ~/.vim/plugin_config/incsearch.vim
 
 " Load a host specific file, if present
