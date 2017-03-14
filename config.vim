@@ -15,7 +15,7 @@ endif
 " Color
 " ---------------
 set t_Co=256
-colorscheme monokai-phoenix
+" colorscheme monokai-phoenix
 
 " Search highlighting. Overriding solarized
 " autocmd ColorScheme * hi Search gui=underline guifg=#f0a0c0
