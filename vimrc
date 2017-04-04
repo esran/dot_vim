@@ -7,6 +7,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Color schemes
+Plug 'flazz/vim-colorschemes'
 if has('nvim')
 	Plug 'Samuel-Phillips/nvim-colors-solarized'
 else
@@ -14,11 +15,17 @@ else
 endif
 
 " Completion
-Plug 'ervandew/supertab'
-Plug 'cazador481/perlomni.vim'
-if version >= 704
-	Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+if has('nvim')
+	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+	" Plug 'tweekmonster/deoplete-clang2'
+	" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang' }
+else
+	Plug 'ervandew/supertab'
+	if version >= 704
+		Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang' }
+	endif
 endif
+Plug 'cazador481/perlomni.vim'
 
 " Finding Stuff
 Plug 'junegunn/fzf', { 'dir': '~/stuff/fzf', 'do': './install --bin' }
@@ -39,7 +46,8 @@ if !has('nvim') && version > 703
 endif
 
 " Coding Tools
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'		" - replaced by ALE
+Plug 'w0rp/ale'
 if has('nvim') || version >= 704
 	Plug 'ludovicchabant/vim-gutentags'
 endif
@@ -49,7 +57,7 @@ Plug 'tpope/vim-endwise'
 
 " Source Countrol
 Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-signify'
+" Plug 'mhinz/vim-signify'			" - removed to avoid clashes with ALE
 
 call plug#end()
 " ============================
@@ -67,14 +75,15 @@ source ~/.vim/plugin_config/deoplete.vim
 source ~/.vim/plugin_config/fzf.vim
 source ~/.vim/plugin_config/nerdtree.vim
 source ~/.vim/plugin_config/airline.vim
-source ~/.vim/plugin_config/syntastic.vim
+" source ~/.vim/plugin_config/syntastic.vim
 source ~/.vim/plugin_config/gutentags.vim
 source ~/.vim/plugin_config/tcomment.vim
 source ~/.vim/plugin_config/signify.vim
 if version >= 704
 	source ~/.vim/plugin_config/ycm.vim
 endif
-source ~/.vim/plugin_config/incsearch.vim
+" source ~/.vim/plugin_config/incsearch.vim
+source ~/.vim/plugin_config/ale.vim
 
 " Load a host specific file, if present
 let s:host_vimrc = $HOME . '/.vim/host/' . hostname() . '/vimrc'

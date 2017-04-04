@@ -15,10 +15,10 @@ endif
 " Color
 " ---------------
 set t_Co=256
-colorscheme solarized
+colorscheme summerfruit256
 
-" Search highlighting. Overriding solarized
-autocmd ColorScheme * hi Search gui=underline guifg=#f0a0c0
+" " Search highlighting. Overriding solarized
+autocmd ColorScheme * hi Search gui=underline guifg=#f0a0c0 guibg=white
 autocmd ColorScheme * hi Search cterm=underline ctermfg=5
 autocmd ColorScheme * hi Search term=none
 
@@ -200,6 +200,12 @@ endif
 " ---------------------------
 " File type formatting issues
 " ---------------------------
-autocmd Filetype haml setlocal expandtab ts=2 sw=2 ai
+autocmd Filetype haml setlocal expandtab ts=8 sw=2 ai
 autocmd Filetype rb setlocal noexpandtab ts=4 sw=4 ai
-autocmd Filetype sql setlocal expandtab ts=2 sw=2 ai
+autocmd Filetype sql setlocal expandtab ts=8 sw=2 ai
+autocmd Filetype java setlocal expandtab ts=8 sw=2 ai
+
+" Use ripgrep if available
+if executable('rg')
+	set grepprg=rg\ --vimgrep
+endif

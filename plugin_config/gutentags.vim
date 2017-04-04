@@ -1,4 +1,4 @@
 " ============================
 " gutentags
-let g:gutentags_exclude = [ '*/debian/*', '*/debian-*/*' ]
+let g:gutentags_ctags_exclude = [ '*/debian/*', '*/debian-*/*' ]
 

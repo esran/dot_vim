@@ -27,7 +27,8 @@ if version >= 703
 				\ 'vimwiki': 1,
 				\ 'text': 1,
 				\ 'infolog': 1,
-				\ 'mail': 1
+				\ 'mail': 1,
+				\ 'sql': 1,
 				\}
 
 	" Don't want preview window

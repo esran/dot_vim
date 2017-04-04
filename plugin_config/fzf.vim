@@ -9,3 +9,21 @@ command! ProjectFiles execute 'Files' s:find_git_root()
 nnoremap <leader>f :ProjectFiles<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>t :Tags<CR>
+
+" edit vim files
+nnoremap <leader>v :Files ~/.vim/<CR>
+nnoremap <leader>p :Files ~/.vim/plugin_config/<CR>
+
+" ripgrep search on files
+command! -bang -nargs=* Find
+			\ call fzf#vim#grep(
+			\ 'rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '
+			\ .shellescape(<q-args>),
+			\ 1,
+			\ <bang>0)
+command! -bang -nargs=* ProjectFind
+			\ call fzf#vim#grep(
+			\ 'rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '
+			\ .shellescape(<q-args>).' '.s:find_git_root(),
+			\ 1,
+			\ <bang>0)
