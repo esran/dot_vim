@@ -1,10 +1,12 @@
 " ============================
+" fix dodgy chars issue
+if has('nvim')
+	let $VTE_VERSION = '100'
+endif
+
+" ============================
 " Load plugins, using vim-plug
 call plug#begin()
-
-" Look and Feel
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 
 " Color schemes
 Plug 'flazz/vim-colorschemes'
@@ -15,17 +17,9 @@ else
 endif
 
 " Completion
-if has('nvim')
-	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-	" Plug 'tweekmonster/deoplete-clang2'
-	" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang' }
-else
-	Plug 'ervandew/supertab'
-	if version >= 704
-		Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang' }
-	endif
-endif
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang' }
 Plug 'cazador481/perlomni.vim'
+Plug 'ervandew/supertab'
 
 " Finding Stuff
 Plug 'junegunn/fzf', { 'dir': '~/stuff/fzf', 'do': './install --bin' }
@@ -51,13 +45,22 @@ Plug 'w0rp/ale'
 if has('nvim') || version >= 704
 	Plug 'ludovicchabant/vim-gutentags'
 endif
-Plug 'autoload_cscope.vim'
+Plug 'erig0/cscope_dynamic'
+" Plug 'autoload_cscope.vim'
 Plug 'chazy/cscope_maps'
 Plug 'tpope/vim-endwise'
+Plug 'sheerun/vim-polyglot'
 
 " Source Countrol
 Plug 'tpope/vim-fugitive'
+Plug 'juneedahamed/vc.vim'
 " Plug 'mhinz/vim-signify'			" - removed to avoid clashes with ALE
+
+" Look and Feel
+Plug 'ryanoasis/vim-devicons'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'itchyny/lightline.vim'
+Plug 'delphinus/lightline-delphinus'
 
 call plug#end()
 " ============================
@@ -72,14 +75,14 @@ source ~/.vim/autocmds.vim
 
 " Source individual plugin configuration files
 source ~/.vim/plugin_config/deoplete.vim
+source ~/.vim/plugin_config/deoplete-clang2.vim
 source ~/.vim/plugin_config/fzf.vim
 source ~/.vim/plugin_config/nerdtree.vim
-source ~/.vim/plugin_config/airline.vim
-" source ~/.vim/plugin_config/syntastic.vim
+source ~/.vim/plugin_config/lightline.vim
 source ~/.vim/plugin_config/gutentags.vim
 source ~/.vim/plugin_config/tcomment.vim
 source ~/.vim/plugin_config/signify.vim
-if version >= 704
+if has('nvim') || version >= 704
 	source ~/.vim/plugin_config/ycm.vim
 endif
 " source ~/.vim/plugin_config/incsearch.vim
