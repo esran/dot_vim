@@ -6,6 +6,7 @@ nnoremap <silent><leader>nf :NERDTreeFind<CR>:wincmd =<CR>
 let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeChDirMode = 1
 let g:NERDTreeMinimalUI = 1
+let g:NERDTreeNaturalSort = 1
 " let g:NERDTreeForceMac = 1
 " Close Vim if NERDTree is the last buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")

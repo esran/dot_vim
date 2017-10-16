@@ -11,8 +11,14 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>t :Tags<CR>
 
 " edit vim files
-nnoremap <leader>v :Files ~/.vim/<CR>
-nnoremap <leader>p :Files ~/.vim/plugin_config/<CR>
+if has('nvim')
+	nnoremap <leader>n :Files ~/.config/nvim/<CR>
+	nnoremap <leader>v :Files ~/.vim/<CR>
+	nnoremap <leader>p :Files ~/.vim/plugin_config/<CR>
+else
+	nnoremap <leader>v :Files ~/.vim/<CR>
+	nnoremap <leader>p :Files ~/.vim/plugin_config/<CR>
+endif
 
 " ripgrep search on files
 command! -bang -nargs=* Find

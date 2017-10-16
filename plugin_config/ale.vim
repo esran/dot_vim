@@ -17,26 +17,17 @@ let g:ale_java_javac_classpath =
 let g:ale_linters = {
 			\ 'zsh': ['shell','shellcheck'],
 			\ 'bash': ['shell','shellcheck'],
-			\ 'c': [],
-			\ 'c++': [],
-			\ 'cpp': [],
+			\ 'c': ['gcc'],
+			\ 'c++': ['g++'],
+			\ 'cpp': ['g++'],
 			\}
 
-let g:ale_c_gcc_options =
-			\ '-Wall -Wmissing-prototypes -Wpointer-arith -Wdeclaration-after-statement -Wendif-labels -Wmissing-format-attribute -Wformat-security -fno-strict-aliasing -fwrapv -fexcess-precision=standard '
-			\ . ' -I .'
-			\ . ' -D JUSTONE'
-			\ . ' -D JO_STATIC=static'
-			\ . ' -I src/include'
-			\ . ' -I src/interfaces/libpq'
-			\ . ' -I src/test/cmocka'
-			\ . ' -I ' . $JO_INST_JO . '/include'
+let g:ale_cpp_gcc_options = ''
+            \ . ' -DJUSTONE '
+            \ . ' -Isrc/include '
+            \ . ' -I$JO_INST_JO/include '
 
-let g:ale_cpp_gcc_options =
-			\ '-Wall -Wmissing-prototypes -Wpointer-arith -Wdeclaration-after-statement -Wendif-labels -Wmissing-format-attribute -Wformat-security -fno-strict-aliasing -fwrapv -fexcess-precision=standard '
-			\ . ' -I .'
-			\ . ' -D JUSTONE'
-			\ . ' -D JO_STATIC=static'
-			\ . ' -I src/include'
-			\ . ' -I src/test/cmocka'
-			\ . ' -I ' . $JO_INST_JO . '/include'
+let g:ale_c_cppcheck_options = '--enable=style'
+
+" Hacked c_gcc to use compile_commands to don't want any extra options
+let g:ale_c_gcc_options = ''

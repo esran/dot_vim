@@ -15,7 +15,8 @@ endif
 " Color
 " ---------------
 set t_Co=256
-colorscheme summerfruit256
+set background=light
+colorscheme solarized
 
 " " Search highlighting. Overriding solarized
 autocmd ColorScheme * hi Search gui=underline guifg=#f0a0c0 guibg=white
@@ -54,9 +55,9 @@ set cursorline     " Highlight current line
 set encoding=utf-8
 set noshowmode     " Don't show the mode since Powerline shows it
 set title          " Set the title of the window in the terminal to the file
-if exists('+colorcolumn')
-	set colorcolumn=80 " Color the 80th column differently as a wrapping guide.
-endif
+" if exists('+colorcolumn')
+" 	set colorcolumn=80 " Color the 80th column differently as a wrapping guide.
+" endif
 " Disable tooltips for hovering keywords in Vim
 " if exists('+ballooneval')
 " 	" This doesn't seem to stop tooltips for Ruby files
@@ -64,10 +65,10 @@ endif
 " 	" 100 second delay seems to be the only way to disable the tooltips
 " 	set balloondelay=100000
 " endif
-set number			" Line numbers
+set nonumber			" Disable for performance reasons
 " Relative line numbers if possible
 if exists('+relativenumber')
-	set relativenumber
+	set norelativenumber    " Disable for performance
 endif
 
 " ---------------
@@ -96,6 +97,7 @@ set scrolloff=3        " Keep three lines below the last line when scrolling
 " set gdefault           " this makes search/replace global by default
 set switchbuf=useopen  " Switch to an existing buffer if one exists
 set modeline
+set nocscopetag			" Don't use cscope for default tag operations
 
 " ---------
 " Clipboard
@@ -204,6 +206,7 @@ autocmd Filetype haml setlocal expandtab ts=8 sw=2 ai
 autocmd Filetype rb setlocal noexpandtab ts=4 sw=4 ai
 autocmd Filetype sql setlocal expandtab ts=8 sw=2 ai
 autocmd Filetype java setlocal expandtab ts=8 sw=2 ai
+autocmd Filetype vim setlocal expandtab ts=4 sw=4 ai
 
 " Use ripgrep if available
 if executable('rg')
