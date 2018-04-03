@@ -12,7 +12,7 @@ nnoremap <leader>t :Tags<CR>
 
 " edit vim files
 if has('nvim')
-	nnoremap <leader>n :Files ~/.config/nvim/<CR>
+	nnoremap <leader>c :Files ~/.config/nvim/<CR>
 	nnoremap <leader>v :Files ~/.vim/<CR>
 	nnoremap <leader>p :Files ~/.vim/plugin_config/<CR>
 else

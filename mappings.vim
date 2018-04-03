@@ -166,8 +166,8 @@ cnoremap w' w<CR>
 nnoremap Q @@
 
 " Removes doc lookup mapping because it's easy to fat finger and never useful.
-nnoremap K k
-vnoremap K k
+" nnoremap K k
+" vnoremap K k
 
 " Toggle paste mode with F6
 " nnoremap <silent> <F6> :set paste!<CR>
@@ -277,3 +277,7 @@ hi def InterestingWord3 guifg=#000000 ctermfg=16 guibg=#2aa198 ctermbg=121
 hi def InterestingWord4 guifg=#000000 ctermfg=16 guibg=#859900 ctermbg=137
 hi def InterestingWord5 guifg=#000000 ctermfg=16 guibg=#cb4b16 ctermbg=211
 hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#dc322f ctermbg=195
+
+" mappings for opening/closing nerdtree
+nnoremap <silent><leader>nn :NERDTreeToggle<CR>:wincmd =<CR>
+nnoremap <silent><leader>nf :NERDTreeFind<CR>:wincmd =<CR>

@@ -3,17 +3,19 @@
 nnoremap <silent><leader>nn :NERDTreeToggle<CR>:wincmd =<CR>
 nnoremap <silent><leader>nf :NERDTreeFind<CR>:wincmd =<CR>
 
+let g:NERDTreeMouseMode = 3
 let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeChDirMode = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeNaturalSort = 1
 " let g:NERDTreeForceMac = 1
+
 " Close Vim if NERDTree is the last buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
 			\&& b:NERDTreeType == "primary") | q | endif
 
 " Filter some files out
-let g:NERDTreeIgnore = [ '\~$', '.o$[[file]]' ]
+let g:NERDTreeIgnore = [ '\~$', '.o$', '\.pyc$' ]
 
 " https://github.com/ryanoasis/vim-webdevicons
 " NERDTress File highlighting

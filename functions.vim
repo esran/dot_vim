@@ -84,14 +84,14 @@ nnoremap <silent> <leader>p :PasteWithPasteMode<CR>
 " Writes the current buffer if it's needed, unless we're the in QuickFix mode.
 " ---------------
 
-function WriteBufferIfNecessary()
+function! WriteBufferIfNecessary()
   if &modified && !&readonly
     :write
   endif
 endfunction
 command! WriteBufferIfNecessary call WriteBufferIfNecessary()
 
-function CRWriteIfNecessary()
+function! CRWriteIfNecessary()
   if &filetype == "qf"
     " Execute a normal enter when in Quickfix list.
     execute "normal! \<enter>"
@@ -167,7 +167,7 @@ endfunction
 command! -range=% WordFrequency <line1>,<line2>call WordFrequency()
 
 " Move windows between tabs
-function MoveToPrevTab()
+function! MoveToPrevTab()
   "there is only one window
   if tabpagenr('$') == 1 && winnr('$') == 1
     return
@@ -189,7 +189,7 @@ function MoveToPrevTab()
   exe "b".l:cur_buf
 endfunc
 
-function MoveToNextTab()
+function! MoveToNextTab()
   "there is only one window
   if tabpagenr('$') == 1 && winnr('$') == 1
     return
