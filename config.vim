@@ -15,7 +15,7 @@ endif
 " Color
 " ---------------
 set t_Co=256
-set background=dark
+set background=light
 colorscheme solarized
 
 " " Search highlighting. Overriding solarized
@@ -173,23 +173,26 @@ set completeopt-=preview
 " Cursor stuff
 " https://github.com/blaenk/dots/blob/9843177fa6155e843eb9e84225f458cd0205c969/vim/vimrc.ln#L49-L64
 " http://www.blaenkdenum.com/posts/a-simpler-vim-statusline/
+" Note: neovim has problems with guicursor and redrawing so skip this
 " ------------
-set gcr=a:block
+if !has('nvim')
+    set gcr=a:block
 
-" mode aware cursors
-set gcr+=o:hor50-Cursor
-set gcr+=n:Cursor
-set gcr+=i-ci-sm:InsertCursor
-set gcr+=r-cr:ReplaceCursor-hor20
-set gcr+=c:CommandCursor
-set gcr+=v-ve:VisualCursor
+    " mode aware cursors
+    set gcr+=o:hor50-Cursor
+    set gcr+=n:Cursor
+    set gcr+=i-ci-sm:InsertCursor
+    set gcr+=r-cr:ReplaceCursor-hor20
+    set gcr+=c:CommandCursor
+    set gcr+=v-ve:VisualCursor
 
-set gcr+=a:blinkon0
+    set gcr+=a:blinkon0
 
-hi InsertCursor  ctermfg=15 guifg=#fdf6e3 ctermbg=37  guibg=#2aa198
-hi VisualCursor  ctermfg=15 guifg=#fdf6e3 ctermbg=125 guibg=#d33682
-hi ReplaceCursor ctermfg=15 guifg=#fdf6e3 ctermbg=65  guibg=#dc322f
-hi CommandCursor ctermfg=15 guifg=#fdf6e3 ctermbg=166 guibg=#cb4b16
+    hi InsertCursor  ctermfg=15 guifg=#fdf6e3 ctermbg=37  guibg=#2aa198
+    hi VisualCursor  ctermfg=15 guifg=#fdf6e3 ctermbg=125 guibg=#d33682
+    hi ReplaceCursor ctermfg=15 guifg=#fdf6e3 ctermbg=65  guibg=#dc322f
+    hi CommandCursor ctermfg=15 guifg=#fdf6e3 ctermbg=166 guibg=#cb4b16
+endif
 
 " ---------
 " Man pages

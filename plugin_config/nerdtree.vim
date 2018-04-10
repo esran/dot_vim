@@ -3,12 +3,11 @@
 nnoremap <silent><leader>nn :NERDTreeToggle<CR>:wincmd =<CR>
 nnoremap <silent><leader>nf :NERDTreeFind<CR>:wincmd =<CR>
 
-let g:NERDTreeMouseMode = 3
+" configuration options
 let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeChDirMode = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeNaturalSort = 1
-" let g:NERDTreeForceMac = 1
 
 " Close Vim if NERDTree is the last buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
@@ -24,6 +23,7 @@ function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
 	exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
 
+" Set colours
 call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
 call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
 call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
