@@ -19,7 +19,7 @@ Plug 'flazz/vim-colorschemes'
 
 " Completion
 if v:version >= 704
-    Plug 'Valloric/YouCompleteMe', { 'do': 'CXX=clang ./install.py --clang-completer --system-libclang' }
+    Plug 'Valloric/YouCompleteMe', { 'do': 'CXX=clang-5.0 ./install.py --clang-completer --system-libclang' }
 else
     if has('nvim')
         Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
