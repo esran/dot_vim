@@ -44,9 +44,12 @@ Plug 'majutsushi/tagbar'
 Plug 'cohama/lexima.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'battlesnake/pgsql.vim'
-if !has('nvim') && v:version > 703
-	Plug 'haya14busa/incsearch.vim'
-endif
+
+" Search + motion tools
+Plug 'easymotion/vim-easymotion'
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
+Plug 'haya14busa/incsearch-easymotion.vim'
 
 " Coding Tools
 " Plug 'scrooloose/syntastic'		" - replaced by ALE
@@ -92,6 +95,7 @@ source ~/.vim/plugin_config/ale.vim
 source ~/.vim/plugin_config/lightline.vim
 source ~/.vim/plugin_config/nerdtree.vim
 source ~/.vim/plugin_config/vim-devicons.vim
+source ~/.vim/plugin_config/incsearch.vim
 
 " Load a host specific file, if present
 let s:host_vimrc = $HOME . '/.vim/host/' . hostname() . '/vimrc'
