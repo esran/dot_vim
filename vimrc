@@ -54,7 +54,7 @@ Plug 'w0rp/ale'
 if has('nvim') || v:version >= 704
 	Plug 'ludovicchabant/vim-gutentags'
 endif
-" Plug 'chazy/cscope_maps'
+Plug 'chazy/cscope_maps'
 Plug 'tpope/vim-endwise'
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/vader.vim'

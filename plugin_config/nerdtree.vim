@@ -10,11 +10,10 @@ let g:NERDTreeMinimalUI = 1
 let g:NERDTreeNaturalSort = 1
 
 " Close Vim if NERDTree is the last buffer
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
-			\&& b:NERDTreeType == "primary") | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Filter some files out
-let g:NERDTreeIgnore = [ '\~$', '.o$', '\.pyc$' ]
+let g:NERDTreeIgnore = [ '\~$', '\.o$', '\.pyc$', '\.class$' ]
 
 " https://github.com/ryanoasis/vim-webdevicons
 " NERDTress File highlighting
@@ -44,4 +43,4 @@ call NERDTreeHighlightFile('cpp', 'Red', 'none', '#ffa500', '#151515')
 call NERDTreeHighlightFile('h', 'green', 'none', 'green', '#151515')
 
 " Don't show ignored status
-let g:NERDTreeShowIgnoredStatus = 0
+let g:NERDTreeShowIgnoredStatus = 1
