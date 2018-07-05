@@ -55,6 +55,9 @@ function! ALEPerlConfig()
     if l:match != ''
         let b:ale_perl_perl_options .= ' -I' . l:match . '/scripts'
     endif
+
+    " include script's directory
+    let b:ale_perl_perl_options .= ' -I' . l:path
 endfunction
 
 function! ALECFindCompileArgs(buffer) abort
