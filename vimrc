@@ -18,16 +18,18 @@ endif
 Plug 'flazz/vim-colorschemes'
 
 " Completion
-if v:version >= 704
-    Plug 'Valloric/YouCompleteMe', { 'do': 'CXX=clang-5.0 ./install.py --clang-completer --system-libclang' }
-else
-    if has('nvim')
-        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-        Plug 'tweekmonster/deoplete-clang2'
-    endif
-endif
-Plug 'ervandew/supertab'
-
+" if v:version >= 704
+"     Plug 'Valloric/YouCompleteMe', { 'do': 'CXX=clang-5.0 ./install.py --clang-completer --system-libclang' }
+" else
+"     if has('nvim')
+"         Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"         Plug 'tweekmonster/deoplete-clang2'
+"     endif
+" endif
+" Plug 'ervandew/supertab'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'ajh17/vimcompletesme'
 
 " Finding Stuff
 Plug 'junegunn/fzf', { 'dir': '~/stuff/fzf', 'do': './install --bin' }
@@ -138,3 +140,21 @@ augroup filetypedetect
     au BufRead,BufNewFile *.py_in               setfiletype python
     au BufRead,BufNewFile *.sql_in,*.setup_in   setfiletype sql
 augroup END
+
+" ------
+" clangd
+" ------
+if executable('clangd')
+    augroup lsp_clangd
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server({
+                    \ 'name': 'clangd',
+                    \ 'cmd': {server_info->['clangd']},
+                    \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+                    \ })
+        autocmd FileType c setlocal omnifunc=lsp#complete
+        autocmd FileType cpp setlocal omnifunc=lsp#complete
+        autocmd FileType objc setlocal omnifunc=lsp#complete
+        autocmd FileType objcpp setlocal omnifunc=lsp#complete
+    augroup end
+endif

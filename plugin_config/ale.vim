@@ -76,7 +76,7 @@ function! ALECFindCompileArgs(buffer) abort
                 "    -c
                 let l:skip = 0
                 let l:args = []
-                for l:arg in split(l:elem.command, ' ')[2:-2]
+                for l:arg in l:elem.arguments[2:-2]
                     if l:skip == 1
                         let l:skip = 0
                     elseif l:arg ==# '-o'
@@ -110,18 +110,18 @@ function! ALECConfig()
         return
     endif
 
-    let b:ale_c_gcc_config = ' -DJO_STATIC=static '
+    let b:ale_c_gcc_options = ' -DJO_STATIC=static '
     let l:path = expand('%:p:h')
 
     let l:match = matchstr(l:path, '.*/work/PostgreSQL/[^/]*')
     if l:match != ''
-        let b:ale_c_gcc_config .= ' -I' . l:match . '/src/include'
+        let b:ale_c_gcc_options .= ' -I' . l:match . '/src/include'
     endif
 
     let l:match = matchstr(l:path, '.*/src/test/cmocka')
     if l:match != ''
-        let b:ale_c_gcc_config .= ' -I' . l:match
-        let b:ale_c_gcc_config .= ' -DJO_CMOCKA -UJO_STATIC -DJO_STATIC= '
+        let b:ale_c_gcc_options .= ' -I' . l:match
+        let b:ale_c_gcc_options .= ' -DJO_CMOCKA -UJO_STATIC -DJO_STATIC= '
     endif
 endfunction
 
@@ -136,28 +136,28 @@ function! ALECPPConfig()
         return
     endif
 
-    let b:ale_cpp_gcc_config = ''
+    let b:ale_cpp_gcc_options = ''
     let l:path = expand('%:p:h')
 
     " PostgreSQL default includes
     let l:match = matchstr(l:path, '.*/work/PostgreSQL/[^/]*')
     if l:match != ''
-        let b:ale_cpp_gcc_config .= ' -DJO_STATIC=static '
-        let b:ale_cpp_gcc_config .= ' -I' . l:match . '/src/include'
+        let b:ale_cpp_gcc_options .= ' -DJO_STATIC=static '
+        let b:ale_cpp_gcc_options .= ' -I' . l:match . '/src/include'
     endif
 
     " PostgreSQL cmocka includes and definitions
     let l:match = matchstr(l:path, '.*/src/test/cmocka')
     if l:match != ''
-        let b:ale_cpp_gcc_config .= ' -I' . l:match
-        let b:ale_cpp_gcc_config .= ' -DJO_CMOCKA -UJO_STATIC -DJO_STATIC= '
+        let b:ale_cpp_gcc_options .= ' -I' . l:match
+        let b:ale_cpp_gcc_options .= ' -DJO_CMOCKA -UJO_STATIC -DJO_STATIC= '
     endif
 
     " JustOne default includes
     let l:match = matchstr(l:path, '.*/work/JustOne/[^/]*')
     if l:match != ''
-        let b:ale_cpp_gcc_config .= ' -I' . l:match . '/src'
-        let b:ale_cpp_gcc_config .= ' -I' . l:match . '/src/include'
+        let b:ale_cpp_gcc_options .= ' -I' . l:match . '/src'
+        let b:ale_cpp_gcc_options .= ' -I' . l:match . '/src/include'
     endif
 endfunction
 
