@@ -17,7 +17,7 @@ let g:ale_python_flake8_options = '--ignore=E501,E402'
 let g:ale_linters = {
 			\ 'zsh': ['shell','shellcheck'],
 			\ 'bash': ['shell','shellcheck'],
-			\ 'c': ['gcc'],
+			\ 'c': ['gcc', 'clangd'],
 			\ 'c++': ['g++'],
 			\ 'cpp': ['g++'],
             \ 'perl': ['perl', 'perlcritic'],
@@ -28,6 +28,12 @@ let g:ale_perl_perlcritic_showrules = 1
 let g:ale_type_map = {
             \ 'perlcritic': {'ES': 'WS', 'E': 'W'}
             \}
+
+" Options for clangd
+" let g:ale_c_clangd_executable = '/usr/bin/clangd'
+" let g:ale_c_clangd_options = ''
+let g:ale_completion_enabled = 1
+" let g:ale_completion_delay = 100
 
 " Some default options for cpp
 let g:ale_cpp_gcc_options = ''
@@ -58,6 +64,9 @@ function! ALEPerlConfig()
 
     " include script's directory
     let b:ale_perl_perl_options .= ' -I' . l:path
+
+    " include hand crafted lib
+    let b:ale_perl_perl_options .= ' -I' . '$HOME/work/perl-lib'
 endfunction
 
 function! ALECFindCompileArgs(buffer) abort

@@ -26,10 +26,11 @@ Plug 'flazz/vim-colorschemes'
 "         Plug 'tweekmonster/deoplete-clang2'
 "     endif
 " endif
-" Plug 'ervandew/supertab'
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
+
+" Plug 'prabirshrestha/async.vim'
+" Plug 'prabirshrestha/vim-lsp'
 Plug 'ajh17/vimcompletesme'
+" Plug 'ervandew/supertab'
 
 " Finding Stuff
 Plug 'junegunn/fzf', { 'dir': '~/stuff/fzf', 'do': './install --bin' }
@@ -46,6 +47,7 @@ Plug 'majutsushi/tagbar'
 Plug 'cohama/lexima.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'battlesnake/pgsql.vim'
+Plug 'tpope/vim-abolish'
 
 " Search + motion tools
 " Plug 'easymotion/vim-easymotion'
@@ -144,17 +146,17 @@ augroup END
 " ------
 " clangd
 " ------
-if executable('clangd')
-    augroup lsp_clangd
-        autocmd!
-        autocmd User lsp_setup call lsp#register_server({
-                    \ 'name': 'clangd',
-                    \ 'cmd': {server_info->['clangd']},
-                    \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
-                    \ })
-        autocmd FileType c setlocal omnifunc=lsp#complete
-        autocmd FileType cpp setlocal omnifunc=lsp#complete
-        autocmd FileType objc setlocal omnifunc=lsp#complete
-        autocmd FileType objcpp setlocal omnifunc=lsp#complete
-    augroup end
-endif
+" if executable('clangd')
+"     augroup lsp_clangd
+"         autocmd!
+"         autocmd User lsp_setup call lsp#register_server({
+"                     \ 'name': 'clangd',
+"                     \ 'cmd': {server_info->['clangd']},
+"                     \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+"                     \ })
+"         autocmd FileType c setlocal omnifunc=lsp#complete
+"         autocmd FileType cpp setlocal omnifunc=lsp#complete
+"         autocmd FileType objc setlocal omnifunc=lsp#complete
+"         autocmd FileType objcpp setlocal omnifunc=lsp#complete
+"     augroup end
+" endif
