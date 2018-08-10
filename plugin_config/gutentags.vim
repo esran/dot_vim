@@ -11,9 +11,7 @@ let g:gutentags_ctags_exclude = [
 
 " let g:gutentags_ctags_tagfile = '.tags'
 
-let g:gutentags_modules = []
-
-let g:gutentags_modules += ['gtags_cscope']
+let g:gutentags_modules = [ 'gtags_cscope', 'ctags', 'cscope' ]
 
 " let s:vim_tags = expand('~/.cache/tags')
 " let g:gutentags_cache_dir = s:vim_tags
@@ -26,5 +24,14 @@ let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 "    silent! call mkdir(s:vim_tags, 'p')
 " endif
 
+" only reference git files in git repos
+let g:gutentags_file_list_command = {
+            \ 'markers': {
+            \ '.git': 'git ls-files',
+            \ '.hg': 'hg files',
+            \ },
+            \ }
+
 set cscopetag
 set cscopeprg='gtags-cscope'
+set nocscopeverbose

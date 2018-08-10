@@ -16,7 +16,7 @@ endif
 " ---------------
 set t_Co=256
 set background=light
-colorscheme solarized
+colorscheme nord
 
 " " Search highlighting. Overriding solarized
 autocmd ColorScheme * hi Search gui=underline guifg=#f0a0c0 guibg=white
@@ -210,6 +210,7 @@ autocmd Filetype rb setlocal noexpandtab ts=4 sw=4 ai
 autocmd Filetype sql setlocal expandtab ts=8 sw=2 ai
 autocmd Filetype java setlocal expandtab ts=8 sw=2 ai
 autocmd Filetype vim setlocal expandtab ts=4 sw=4 ai
+autocmd Filetype xml setlocal noexpandtab ts=2 sw=2 ai
 
 " Use ripgrep if available
 if executable('rg')

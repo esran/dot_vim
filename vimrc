@@ -9,13 +9,14 @@ endif
 " Load plugins, using vim-plug
 call plug#begin()
 
-" Solarized
-if has('nvim')
-    Plug 'Samuel-Phillips/nvim-colors-solarized'
-else
-    Plug 'altercation/vim-colors-solarized'
-endif
-Plug 'flazz/vim-colorschemes'
+" Color schemes
+" if has('nvim')
+"     Plug 'Samuel-Phillips/nvim-colors-solarized'
+" else
+"     Plug 'altercation/vim-colors-solarized'
+" endif
+" Plug 'flazz/vim-colorschemes'
+Plug 'arcticicestudio/nord-vim'
 
 " Completion
 " if v:version >= 704
@@ -29,8 +30,8 @@ Plug 'flazz/vim-colorschemes'
 
 " Plug 'prabirshrestha/async.vim'
 " Plug 'prabirshrestha/vim-lsp'
-Plug 'ajh17/vimcompletesme'
-" Plug 'ervandew/supertab'
+" Plug 'ajh17/vimcompletesme'
+Plug 'ervandew/supertab'
 
 " Finding Stuff
 Plug 'junegunn/fzf', { 'dir': '~/stuff/fzf', 'do': './install --bin' }
@@ -56,7 +57,6 @@ Plug 'tpope/vim-abolish'
 " Plug 'haya14busa/incsearch-easymotion.vim'
 
 " Coding Tools
-" Plug 'scrooloose/syntastic'		" - replaced by ALE
 Plug 'w0rp/ale'
 if has('nvim') || v:version >= 704
 	Plug 'ludovicchabant/vim-gutentags'
@@ -77,6 +77,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'itchyny/lightline.vim'
 Plug 'delphinus/lightline-delphinus'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'edkolev/tmuxline.vim'
 
 call plug#end()
 " ============================
@@ -99,6 +100,8 @@ source ~/.vim/plugin_config/ale.vim
 source ~/.vim/plugin_config/lightline.vim
 source ~/.vim/plugin_config/nerdtree.vim
 source ~/.vim/plugin_config/vim-devicons.vim
+source ~/.vim/plugin_config/nord.vim
+source ~/.vim/plugin_config/tmuxline.vim
 " source ~/.vim/plugin_config/incsearch.vim
 
 " Load a host specific file, if present
@@ -117,14 +120,14 @@ if has('nvim')
 	set shell=zsh
 
 	" mappings for ctrl-hjlk window swapping, including terminal
-	tnoremap <C-h> <C-\><C-n><C-w>h
-	tnoremap <C-j> <C-\><C-n><C-w>j
-	tnoremap <C-k> <C-\><C-n><C-w>k
-	tnoremap <C-l> <C-\><C-n><C-w>l
-	nnoremap <C-h> <C-w>h
-	nnoremap <C-j> <C-w>j
-	nnoremap <C-k> <C-w>k
-	nnoremap <C-l> <C-w>l
+	" tnoremap <C-h> <C-\><C-n><C-w>h
+	" tnoremap <C-j> <C-\><C-n><C-w>j
+	" tnoremap <C-k> <C-\><C-n><C-w>k
+	" tnoremap <C-l> <C-\><C-n><C-w>l
+	" nnoremap <C-h> <C-w>h
+	" nnoremap <C-j> <C-w>j
+	" nnoremap <C-k> <C-w>k
+	" nnoremap <C-l> <C-w>l
 	" map escape in terminal to vim style escape
 	" tnoremap <Esc> <C-\><C-n>
 endif
@@ -142,21 +145,3 @@ augroup filetypedetect
     au BufRead,BufNewFile *.py_in               setfiletype python
     au BufRead,BufNewFile *.sql_in,*.setup_in   setfiletype sql
 augroup END
-
-" ------
-" clangd
-" ------
-" if executable('clangd')
-"     augroup lsp_clangd
-"         autocmd!
-"         autocmd User lsp_setup call lsp#register_server({
-"                     \ 'name': 'clangd',
-"                     \ 'cmd': {server_info->['clangd']},
-"                     \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
-"                     \ })
-"         autocmd FileType c setlocal omnifunc=lsp#complete
-"         autocmd FileType cpp setlocal omnifunc=lsp#complete
-"         autocmd FileType objc setlocal omnifunc=lsp#complete
-"         autocmd FileType objcpp setlocal omnifunc=lsp#complete
-"     augroup end
-" endif

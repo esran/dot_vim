@@ -182,10 +182,6 @@ iabbrev ddate <C-R>=strftime("%Y-%m-%d")<CR>
 " match the file being edited
 nnoremap <F5> :lcd %:p:h<CR>:pwd<CR>
 
-" Ale next/previous error
-nnoremap <F6> :ALEPreviousWrap<CR>
-nnoremap <F7> :ALENextWrap<CR>
-
 " Merging, accept remote
 nnoremap <F8> :diffget RE<CR>n
 

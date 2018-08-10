@@ -21,7 +21,23 @@ let g:ale_linters = {
 			\ 'c++': ['g++'],
 			\ 'cpp': ['g++'],
             \ 'perl': ['perl', 'perlcritic'],
+            \ 'python' : [ 'flake8', 'mypy', 'pylint'],
 			\}
+
+" Fixers
+let g:ale_fixers = {
+            \   'javascript': [
+            \       'DoSomething',
+            \       'eslint',
+            \       {buffer, lines -> filter(lines, 'v:val !=~ ''^\s*//''')},
+            \   ],
+            \ 'python' : [ 'autopep8' ]
+            \}
+
+" some ignore patterns
+let g:ale_pattern_options = {
+            \ '.*/pg_proc.*\.h' : { 'ale_enabled' : 0 },
+            \}
 
 " perlcritic defaults
 let g:ale_perl_perlcritic_showrules = 1
@@ -54,6 +70,12 @@ function! ALEPerlConfig()
     let l:match = matchstr(l:path, '.*/src/test/JustOne/scripts')
     if l:match != ''
         let b:ale_perl_perl_options .= ' -I' . l:match
+    endif
+
+    let l:match = matchstr(l:path, '.*/ReportingAndRollup/.*')
+    if l:match != ''
+        let l:match = match(l:path, 'ReportingAndRollup')
+        let b:ale_perl_perl_options .= ' -I' . l:path[0:l:match-1] . 'Base/src/'
     endif
 
     " anything in a scripts group includes that group's scripts directory
@@ -190,4 +212,9 @@ let g:ale_c_cppcheck_options = '--enable=style'
 
 " let g:ale_java_javac_classpath =
 " 			\ '/opt/sean/PostgreSQL/lib/postgresql-9.3-1103.jdbc4.jar:./src/bin/jolo'
+
+" Ale next/previous error
+nnoremap <F6> :ALEPreviousWrap<CR>
+nnoremap <F7> :ALENextWrap<CR>
+nnoremap <F8> <Plug>(ale_fix)
 
