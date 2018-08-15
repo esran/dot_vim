@@ -48,7 +48,7 @@ let g:ale_type_map = {
 " Options for clangd
 " let g:ale_c_clangd_executable = '/usr/bin/clangd'
 " let g:ale_c_clangd_options = ''
-let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 0
 " let g:ale_completion_delay = 100
 
 " Some default options for cpp
@@ -95,10 +95,12 @@ function! ALECFindCompileArgs(buffer) abort
     let l:compile_args = {}
 
     let l:compile_commands_path = ale#path#FindNearestFile(a:buffer, 'compile_commands.json')
+    " echo "compile_commands.json: " . l:compile_commands_path
 
     if !empty(l:compile_commands_path) && filereadable(l:compile_commands_path)
         for l:elem in json_decode(readfile(l:compile_commands_path))
             if ale#path#IsBufferPath(a:buffer, l:elem.file)
+                " echo l:elem
                 let l:compile_args.directory = l:elem.directory
                 " skip unwanted stuff
                 "   first arg (compiler)

@@ -15,13 +15,14 @@ endif
 " Color
 " ---------------
 set t_Co=256
-set background=light
 colorscheme nord
+set background=light
+set background=dark
 
 " " Search highlighting. Overriding solarized
-autocmd ColorScheme * hi Search gui=underline guifg=#f0a0c0 guibg=white
-autocmd ColorScheme * hi Search cterm=underline ctermfg=5
-autocmd ColorScheme * hi Search term=none
+" autocmd ColorScheme * hi Search gui=underline guifg=#f0a0c0 guibg=white
+" autocmd ColorScheme * hi Search cterm=underline ctermfg=5
+" autocmd ColorScheme * hi Search term=none
 
 " -----------------------------
 " File Locations
